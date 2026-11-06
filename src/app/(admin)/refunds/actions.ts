@@ -5,6 +5,7 @@ import { z } from "zod";
 import { logActivity } from "@/lib/activity";
 import { docId, failure, type Result } from "@/lib/actions";
 import { assertPermission } from "@/lib/auth/session";
+import { notifyRefund } from "@/lib/email/notify";
 import { REFUND_STATUSES, REFUND_STATUS_LABELS, createRefund, refundRequestSchema, transitionRefund, type RefundStatus } from "@/lib/refunds/service";
 
 export async function createRefundAction(values: unknown): Promise<Result<{ id: string }>> {
@@ -34,8 +35,9 @@ export async function transitionRefundAction(input: { id: string; status: Refund
       productId: r.productId,
       summary: `${r.number}: ${REFUND_STATUS_LABELS[r.status]} → ${REFUND_STATUS_LABELS[v.status]}`,
     });
+    const email = ["approved", "rejected", "completed"].includes(v.status) ? await notifyRefund(v.id, actor.uid) : null;
     refresh();
-    return { ok: true, message: `Refund ${REFUND_STATUS_LABELS[v.status].toLowerCase()}.` };
+    return { ok: true, message: `Refund ${REFUND_STATUS_LABELS[v.status].toLowerCase()}${email?.status === "sent" ? " — customer emailed" : ""}.` };
   } catch (error) {
     return failure(error, "refund transition");
   }

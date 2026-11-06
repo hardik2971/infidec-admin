@@ -24,11 +24,10 @@ Firebase Cloud Functions ── claims sync, verification, download authorizatio
 | 3 | Storage integration, source ZIP upload, packages, versions | **Done** |
 | 4 | Documentation CMS, customers, orders, purchase records, licenses | **Done** |
 | 5 | Secure downloads, Envato API, marketplace listings, support tickets, refunds | **Done** |
-| 6 | Website sync, email, analytics, reports, activity logs | Planned |
+| 6 | Website sync, email, analytics, reports, activity logs | **Done** |
 | 7 | Security & performance testing, production deployment | Planned |
 
-Every sidebar entry from the spec already exists. Modules from later phases show a roadmap page
-(`src/components/module-roadmap.tsx`) until they ship; replace the route's `page.tsx` to deliver one.
+Every sidebar entry from the spec is now a working module.
 
 ## Getting started
 
@@ -98,6 +97,32 @@ in Storage Management (capped at 2 GB by the Storage rules).
 - **Refunds** are tracked, never processed: marketplace refunds happen on Envato, direct refunds in
   your gateway. Completing a full refund marks the order refunded and the license refunded.
 
+### Website sync, email, analytics & reports (Phase 6)
+
+- **Infidec Website** (Integrations → Infidec Website) reads the website's Firestore
+  (`marketplace-infidec`) with a service-account key stored encrypted in
+  `integrationSettings/website`. Access is **read-only** and uses explicit field lists, so customer
+  password hashes are never fetched. *Sync now* imports website accounts as customers (matched by
+  email) and each order item as a direct INFIDEC order with id `web_<orderId>_<n>`, so re-running is
+  safe. The website marks orders paid without a gateway, so imports are always **pending /
+  unverified** — confirm the payment and mark the order completed to issue the license. *Preview*
+  shows what would change without writing. *Check live prices* compares product prices with each
+  live product page (JSON-LD + price labels) and can copy the website's prices.
+- **SMTP & Email** uses `MAIL_HOST/PORT/USERNAME/PASSWORD/FROM_ADDRESS/FROM_NAME` (password in Secret
+  Manager). Nine templates (purchase, license verified, new release, product update, ticket
+  created/reply, refund status, download link, registration) can be edited, previewed and switched
+  on/off. Every attempt is logged in `notifications`. The support email from General Settings is
+  used as reply-to.
+- **Analytics** covers revenue per currency, products, channels, order status/sources, license
+  types, downloads & version adoption, verifications, customers, tickets, refunds and email.
+- **Reports**: 11 reports (product, marketplace and direct sales, revenue, customers, licenses,
+  downloads, refunds, tickets, version adoption, storage usage) with product / marketplace / date
+  filters, CSV export (`/api/reports`, formula-injection safe) and a print/PDF view
+  (`/report-print`). Requires `reports:export`; every export is logged.
+- **Activity logs** export the last 30 days as CSV (`activity:export`).
+- **General Settings**: platform name, support email, base currency, upload limit, download-link
+  lifetime.
+
 ### Scripts
 
 | Script | Purpose |
@@ -115,6 +140,48 @@ than 10 s to load the code locally. Retry with a longer discovery timeout:
 `FUNCTIONS_DISCOVERY_TIMEOUT=60 npm run deploy:functions` (Git Bash) or
 `$env:FUNCTIONS_DISCOVERY_TIMEOUT=60; npm run deploy:functions` (PowerShell).
 | `npm run emulators` | Local Firebase emulators |
+
+## Deploying (https://infidec-admin.web.app)
+
+The admin renders on the server, so it runs on **Firebase App Hosting** (backend `infidec-admin`,
+region `asia-southeast1` — App Hosting isn't offered in `asia-south1`):
+https://infidec-admin--infidec-admin.asia-southeast1.hosted.app
+
+**https://infidec-admin.web.app** (Firebase Hosting) serves the admin directly: `firebase.json` →
+`hosting.rewrites` forwards every request to the App Hosting Cloud Run service. Hosting only forwards
+the `__session` cookie, which is the cookie the admin uses.
+
+One-time requirement (already done): the Cloud Run service `infidec-admin` (asia-southeast1) must
+allow public access — Cloud Run → infidec-admin → Permissions → `allUsers` = **Cloud Run Invoker**.
+Without it Hosting gets 403. Every page and API still requires a staff session. The setting
+survives App Hosting deploys; re-apply it only if the backend is deleted and recreated.
+
+All displayed dates use `NEXT_PUBLIC_APP_TIME_ZONE` (default `Asia/Kolkata`) so the server (UTC) and
+the browser render identical text.
+
+Configuration lives in `apphosting.yaml` (public values) and Cloud Secret Manager (credentials).
+One-time secret setup (values are piped from your local files, never typed or committed):
+
+```bash
+node -e "process.stdout.write(require('./secret/infidec-admin-firebase-private-key.json').private_key)"   | firebase apphosting:secrets:set FIREBASE_PRIVATE_KEY --data-file -
+grep '^INTEGRATION_ENCRYPTION_KEY=' .env.local | cut -d= -f2- | tr -d '
+'   | firebase apphosting:secrets:set INTEGRATION_ENCRYPTION_KEY --data-file -
+grep '^MAIL_PASSWORD=' .env.local | cut -d= -f2- | tr -d '
+'   | firebase apphosting:secrets:set MAIL_PASSWORD --data-file -
+for s in FIREBASE_PRIVATE_KEY INTEGRATION_ENCRYPTION_KEY MAIL_PASSWORD; do
+  firebase apphosting:secrets:grantaccess $s --backend infidec-admin --location asia-southeast1
+done
+```
+
+`INTEGRATION_ENCRYPTION_KEY` must be the same key that encrypted the stored Envato/Razorpay
+credentials, otherwise they can't be decrypted.
+
+Deploy (uploads local source; `secret/`, `.env*` and `functions/` are excluded):
+
+```bash
+firebase deploy --only apphosting   # build + run the app
+firebase deploy --only hosting      # serve the app on infidec-admin.web.app
+```
 
 ## Architecture
 

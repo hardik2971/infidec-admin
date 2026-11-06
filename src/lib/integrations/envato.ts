@@ -1,6 +1,7 @@
 import "server-only";
 
 import { DomainError } from "@/lib/actions";
+import { formatDateTime } from "@/lib/format";
 import { getIntegrationSecret, rateLimitedUntil, recordError } from "./settings";
 
 /**
@@ -28,7 +29,7 @@ export class EnvatoError extends DomainError {
 async function request<T>(path: string): Promise<T> {
   const limited = await rateLimitedUntil("envato");
   if (limited) {
-    throw new EnvatoError(`Envato asked us to slow down. Try again after ${limited.toLocaleTimeString("en-GB")}.`, 429);
+    throw new EnvatoError(`Envato asked us to slow down. Try again after ${formatDateTime(limited)}.`, 429);
   }
   const token = await getIntegrationSecret("envato");
   if (!token) throw new EnvatoError("The Envato API token isn't configured. Add it under Integrations → Envato API.", 0);

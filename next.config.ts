@@ -12,6 +12,15 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   poweredByHeader: false,
+  experimental: {
+    serverActions: {
+      // Public hosts in front of the app (e.g. infidec-admin.web.app via Firebase Hosting).
+      allowedOrigins: (process.env.APP_PUBLIC_HOSTS ?? "")
+        .split(",")
+        .map((h) => h.trim())
+        .filter(Boolean),
+    },
+  },
   serverExternalPackages: ["firebase-admin"],
   turbopack: {
     rules: {

@@ -62,10 +62,15 @@ export function TicketView({
     form.append("body", body);
     form.append("internal", String(internal));
     files.forEach((f) => form.append("files", f));
-    const r = await fetch(`/api/tickets/${ticket.id}/messages`, { method: "POST", body: form }).then((x) => x.json() as Promise<{ ok: boolean; error?: string }>);
+    const r = await fetch(`/api/tickets/${ticket.id}/messages`, { method: "POST", body: form }).then(
+      (x) => x.json() as Promise<{ ok: boolean; error?: string; emailStatus?: string | null; emailError?: string | null }>,
+    );
     setSending(false);
     if (r.ok) {
-      toast.success(internal ? "Internal note added." : "Reply recorded.");
+      if (internal) toast.success("Internal note added.");
+      else if (r.emailStatus === "sent") toast.success("Reply sent and emailed to the customer.");
+      else if (r.emailStatus === "failed") toast.warning("Reply saved, but the email failed.", { description: r.emailError ?? undefined });
+      else toast.success("Reply recorded (email notifications for replies are switched off).");
       setBody("");
       setFiles([]);
       router.refresh();
@@ -114,6 +119,8 @@ export function TicketView({
                       </Badge>
                     )}
                     {formatDateTime(m.createdAt)}
+                    {m.authorType === "staff" && !m.internal && m.emailStatus === "sent" && <span className="text-success">· Emailed</span>}
+                    {m.authorType === "staff" && !m.internal && m.emailStatus === "failed" && <span className="text-destructive">· Email failed</span>}
                   </p>
                   <p className="text-sm leading-relaxed whitespace-pre-wrap">{m.body}</p>
                   {m.attachments.length > 0 && (
@@ -185,7 +192,7 @@ export function TicketView({
                     {sending ? <Spinner /> : internal ? <Lock /> : <Send />} {internal ? "Add note" : "Send reply"}
                   </Button>
                 </div>
-                {!internal && <p className="text-xs text-muted-foreground">Replies are recorded on the ticket. Email delivery to the customer starts when SMTP is configured (Phase 6).</p>}
+                {!internal && <p className="text-xs text-muted-foreground">Replies are saved on the ticket and emailed to the customer.</p>}
               </CardContent>
             </Card>
           )}

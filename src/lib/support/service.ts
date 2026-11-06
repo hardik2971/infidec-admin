@@ -79,6 +79,7 @@ export async function listMessages(id: string): Promise<TicketMessage[]> {
     authorName: String(d.get("authorName") ?? ""),
     body: String(d.get("body") ?? ""),
     internal: !!d.get("internal"),
+    emailStatus: d.get("emailStatus") ?? null,
     attachments: d.get("attachments") ?? [],
     createdAt: iso(d.get("createdAt")),
   }));
@@ -159,15 +160,15 @@ export async function addMessage(
   }
 
   const batch = adminDb.batch();
-  batch.set(ref.collection("messages").doc(), {
+  const messageRef = ref.collection("messages").doc();
+  batch.set(messageRef, {
     authorType: "staff",
     authorId: actor.uid,
     authorName: actor.name,
     body: input.body,
     internal: input.internal,
     attachments,
-    // Email delivery arrives with SMTP in Phase 6; replies are recorded now.
-    emailStatus: input.internal ? "not_applicable" : "pending_smtp",
+    emailStatus: input.internal ? "not_applicable" : "pending",
     createdAt: FieldValue.serverTimestamp(),
   });
   const status = snap.get("status") as TicketStatus;
@@ -183,7 +184,7 @@ export async function addMessage(
         }),
   });
   await batch.commit();
-  return { attachments: attachments.length, subject: String(snap.get("subject")) };
+  return { attachments: attachments.length, subject: String(snap.get("subject")), messageId: messageRef.id };
 }
 
 export async function updateTicket(

@@ -104,8 +104,24 @@ Tracks a staging upload from registration to validation: `uid`, product/version/
 | `supportTickets` | number (TKT-NNNNNN), subject, category, status, priority, productId, customerId, assignedTo, entitlement { supported, supportExpiry, licenseId, checkedAt }; subcollection `messages` (authorType, body, internal, attachments[]) |
 | `refunds` | number (RFD-NNNNNN), orderId, customerId, productId, channel, marketplace, reason, amount, currency, status, adminNotes, history[] |
 | `productListings` | productId, marketplaceId, status (draft → ready → submitted → under_review → approved/rejected → published), itemTitle, description, tags[], versionId, source/documentation package ids, media ids, changelog, requirements, checklist, rejectionNotes, resubmissions, itemId, history[] |
-| `integrationSettings/{envato,razorpay}` | secret (AES-256-GCM, server-only), secretHint, publicConfig, lastTest*, lastError, rateLimitedUntil |
+| `integrationSettings/{envato,razorpay,website}` | secret (AES-256-GCM, server-only), secretHint, publicConfig, lastTest*, lastError, rateLimitedUntil |
 | `systemSettings/counters` | sequential order / ticket / refund numbers |
+
+
+## Website sync, email & settings (Phase 6)
+
+| Collection | Key fields |
+| ---------- | ---------- |
+| `customers` (website) | id `web_<websiteUserId>`, source "website", websiteUserId |
+| `orders` (website) | id `web_<websiteOrderId>_<n>`, source "website", channel "direct", marketplace "infidec", status/paymentStatus "pending", verificationStatus "unverified", websiteOrderId, websiteStatus, websitePaymentMethod, websitePlan, websiteSyncedAt |
+| `integrationSettings/website` | secret (encrypted service-account JSON), publicConfig { projectId, clientEmail, baseUrl }, lastSync { stats, at, byEmail } |
+| `notifications` | channel "email", template, to, subject, status (sent/failed/skipped), error, messageId, related { type, id }, sentBy, createdAt |
+| `systemSettings/email` | templates { key: { subject, body } } (overrides), enabled { key: bool } |
+| `systemSettings/general` | platformName, supportEmail, baseCurrency (INR/USD), maxUploadSizeMb, signedUrlTtlMinutes, updatedBy |
+| `productVersions` | notifiedAt, notifiedCounts (after "Notify customers") |
+| `supportTickets/*/messages` | emailStatus (pending/sent/failed/not_applicable), emailError |
+
+The website project is never written to.
 
 `activityLogs` entries carry `domain` (the part of `action` before the dot) for filtering.
 

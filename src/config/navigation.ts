@@ -56,14 +56,14 @@ export interface NavSection {
 }
 
 /** Phase that is currently implemented; items beyond it render a roadmap page. */
-export const CURRENT_PHASE = 5;
+export const CURRENT_PHASE = 6;
 
 export const NAVIGATION: NavSection[] = [
   {
     title: "Dashboard",
     items: [
       { title: "Overview", href: "/dashboard", icon: LayoutDashboard, permission: "dashboard:view", phase: 1, description: "Live business overview across every product." },
-      { title: "Analytics", href: "/analytics", icon: BarChart3, permission: "analytics:view", phase: 6, description: "Deep-dive analytics with cohort and trend analysis." },
+      { title: "Analytics", href: "/analytics", icon: BarChart3, permission: "analytics:view", phase: 6, description: "Sales, license, download, support and email analytics." },
     ],
   },
   {
@@ -137,7 +137,7 @@ export const NAVIGATION: NavSection[] = [
     title: "Integrations",
     items: [
       { title: "Envato API", href: "/integrations/envato", icon: PlugZap, permission: "integrations:view", phase: 5, description: "Official Envato Market API credentials and sync." },
-      { title: "Infidec Website", href: "/integrations/website", icon: Globe, permission: "integrations:view", phase: 6, description: "Product sync with infidec.com." },
+      { title: "Infidec Website", href: "/integrations/website", icon: Globe, permission: "integrations:view", phase: 6, description: "Customer & order import and price checks with the website." },
       { title: "Payment Gateways", href: "/integrations/payments", icon: CreditCard, permission: "integrations:view", phase: 5, description: "Direct-sale payment gateway settings." },
       { title: "SMTP", href: "/integrations/smtp", icon: Mail, permission: "integrations:view", phase: 6, description: "Outgoing email, templates and logs." },
       { title: "Firebase Settings", href: "/integrations/firebase", icon: Flame, permission: "integrations:view", phase: 1, description: "Firebase project configuration and health." },

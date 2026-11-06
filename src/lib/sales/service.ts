@@ -241,11 +241,12 @@ export async function setOrderStatus(id: string, status: OrderStatus, actorId: s
       updatedAt: FieldValue.serverTimestamp(),
     });
     let licenseId: string | null = order.licenseId ?? null;
-    if (status === "completed" && order.channel === "direct" && !licenseId) licenseId = issueDirectLicense(tx, ref, order, Number(product.get("supportDurationMonths") ?? 6));
+    const licenseIssued = status === "completed" && order.channel === "direct" && !licenseId;
+    if (licenseIssued) licenseId = issueDirectLicense(tx, ref, order, Number(product.get("supportDurationMonths") ?? 6));
     if (licenseId && (status === "refunded" || status === "cancelled")) {
       tx.update(col("licenses").doc(licenseId), { status: status === "refunded" ? "refunded" : "revoked", updatedAt: FieldValue.serverTimestamp() });
     }
-    return { previous, orderNumber: String(order.orderNumber ?? id), productId: String(order.productId) };
+    return { previous, orderNumber: String(order.orderNumber ?? id), productId: String(order.productId), licenseIssued };
   });
 }
 

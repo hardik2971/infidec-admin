@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { deleteVersionAction, setVersionStatusAction } from "@/app/(admin)/versions/actions";
+import { deleteVersionAction, notifyVersionAction, setVersionStatusAction } from "@/app/(admin)/versions/actions";
 import { PackageUploader, type UploaderVersion } from "@/components/packages/package-uploader";
 import { PackagesTable, type PackageCaps } from "@/components/packages/packages-table";
 import { VersionForm } from "@/components/packages/version-form";
@@ -28,7 +28,7 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { formatBytes, formatDateTime } from "@/lib/format";
 import type { PackageRecord, VersionRecord, VersionStatus } from "@/lib/packages/schema";
 
-type Confirm = { status: VersionStatus; title: string; body: string } | { delete: true } | null;
+type Confirm = { status: VersionStatus; title: string; body: string } | { delete: true } | { notify: true } | null;
 
 export function VersionDetail({
   version,
@@ -83,18 +83,20 @@ export function VersionDetail({
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <span>
-                <Button variant="outline" disabled>
-                  <BellRing /> Notify customers
-                </Button>
-              </span>
-            </TooltipTrigger>
-            <TooltipContent className="max-w-xs">
-              Notifying eligible license holders needs customer licenses and email — available once Phases 4 and 6 ship.
-            </TooltipContent>
-          </Tooltip>
+          {caps.canPublish && (
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <span>
+                  <Button variant="outline" disabled={pending || version.status !== "published"} onClick={() => setConfirm({ notify: true })}>
+                    <BellRing /> Notify customers
+                  </Button>
+                </span>
+              </TooltipTrigger>
+              <TooltipContent className="max-w-xs">
+                {version.status === "published" ? "Email every customer with an active license for this product." : "Publish the version first."}
+              </TooltipContent>
+            </Tooltip>
+          )}
           {caps.packages.canUpload && !deprecated && (
             <Button variant="outline" onClick={() => setUploading(true)}>
               <Upload /> Upload packages
@@ -189,9 +191,19 @@ export function VersionDetail({
       <AlertDialog open={!!confirm} onOpenChange={(o) => !o && setConfirm(null)}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>{confirm && "delete" in confirm ? `Delete draft v${version.version}?` : confirm?.title}</AlertDialogTitle>
+            <AlertDialogTitle>
+              {confirm && "delete" in confirm
+                ? `Delete draft v${version.version}?`
+                : confirm && "notify" in confirm
+                  ? `Email v${version.version} to license holders?`
+                  : confirm?.title}
+            </AlertDialogTitle>
             <AlertDialogDescription>
-              {confirm && "delete" in confirm ? "Only empty draft versions can be deleted. This can't be undone." : confirm?.body}
+              {confirm && "delete" in confirm
+                ? "Only empty draft versions can be deleted. This can't be undone."
+                : confirm && "notify" in confirm
+                  ? `Every customer with an active ${product.name} license receives the release notes by email. Refunded and revoked licenses are excluded.`
+                  : confirm?.body}
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>
@@ -201,7 +213,13 @@ export function VersionDetail({
               onClick={() => {
                 const c = confirm;
                 setConfirm(null);
-                if (c && "delete" in c) {
+                if (c && "notify" in c) {
+                  startTransition(async () => {
+                    const r = await notifyVersionAction(version.id);
+                    if (r.ok) toast.success(r.message);
+                    else toast.error(r.error);
+                  });
+                } else if (c && "delete" in c) {
                   startTransition(async () => {
                     const r = await deleteVersionAction(version.id);
                     if (r.ok) {

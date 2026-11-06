@@ -6,6 +6,7 @@ import { logActivity } from "@/lib/activity";
 import { docId, failure, type Result } from "@/lib/actions";
 import { assertPermission } from "@/lib/auth/session";
 import { PRIORITIES, TICKET_STATUSES, TICKET_STATUS_LABELS, ticketSchema } from "@/lib/support/schema";
+import { notifyTicketCreated } from "@/lib/email/notify";
 import { createTicket, recheckEntitlement, saveCategories, updateTicket } from "@/lib/support/service";
 
 export async function createTicketAction(values: unknown): Promise<Result<{ id: string }>> {
@@ -13,6 +14,7 @@ export async function createTicketAction(values: unknown): Promise<Result<{ id: 
     const actor = await assertPermission("support:create");
     const v = ticketSchema.parse(values);
     const id = await createTicket(v, { uid: actor.uid, name: actor.displayName });
+    await notifyTicketCreated(id, actor.uid);
     await logActivity({ action: "ticket.created", actorId: actor.uid, actorEmail: actor.email, targetType: "ticket", targetId: id, productId: v.productId, summary: `Opened ticket "${v.subject}"` });
     refresh();
     return { ok: true, id, message: "Ticket created." };

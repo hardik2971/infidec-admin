@@ -5,7 +5,7 @@ import { decryptSecret, encryptSecret } from "@/lib/crypto";
 import { adminDb } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 
-export type IntegrationId = "envato" | "razorpay";
+export type IntegrationId = "envato" | "razorpay" | "website";
 
 /** Public (non-secret) view of an integration — safe to send to the browser. */
 export interface IntegrationStatus {
@@ -28,6 +28,7 @@ const iso = (v: unknown) => (v instanceof Timestamp ? v.toDate().toISOString() :
 const ENV_SECRET: Record<IntegrationId, string | undefined> = {
   envato: process.env.ENVATO_PERSONAL_TOKEN,
   razorpay: process.env.RAZORPAY_KEY_SECRET,
+  website: undefined,
 };
 
 export async function getIntegrationStatus(id: IntegrationId): Promise<IntegrationStatus> {

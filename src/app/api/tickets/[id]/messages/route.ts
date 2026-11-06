@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { DomainError } from "@/lib/actions";
 import { logActivity } from "@/lib/activity";
 import { getStaffSession } from "@/lib/auth/session";
+import { notifyTicketReply } from "@/lib/email/notify";
 import { isSameOrigin } from "@/lib/http";
 import { hasPermission } from "@/lib/rbac/permissions";
 import { addMessage, MAX_TICKET_FILE } from "@/lib/support/service";
@@ -40,7 +41,8 @@ export async function POST(request: NextRequest, { params }: RouteContext<"/api/
       targetId: id,
       summary: `${internal ? "Internal note on" : "Replied to"} "${r.subject}"${r.attachments ? ` with ${r.attachments} file(s)` : ""}`,
     });
-    return json(200, { ok: true });
+    const email = internal ? null : await notifyTicketReply(id, r.messageId, body, session.displayName, session.uid);
+    return json(200, { ok: true, emailStatus: email?.status ?? null, emailError: email?.error ?? null });
   } catch (error) {
     if (error instanceof DomainError) return json(400, { ok: false, error: error.message });
     console.error("[ticket message]", error);

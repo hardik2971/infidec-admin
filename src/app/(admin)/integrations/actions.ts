@@ -7,6 +7,7 @@ import { DomainError, failure, type Result } from "@/lib/actions";
 import { assertPermission } from "@/lib/auth/session";
 import { encryptionConfigured } from "@/lib/crypto";
 import { getItem, getTokenOwner, type EnvatoItem } from "@/lib/integrations/envato";
+import { testWebsiteConnection } from "@/lib/website/source";
 import { clearIntegrationSecret, getIntegrationSecret, getIntegrationStatus, recordTest, saveIntegration, type IntegrationId } from "@/lib/integrations/settings";
 
 function requireEncryption() {
@@ -35,6 +36,14 @@ export async function testIntegrationAction(id: IntegrationId): Promise<Result> 
     if (id === "envato") {
       try {
         message = `Connected as ${await getTokenOwner()}.`;
+      } catch (error) {
+        ok = false;
+        message = (error as Error).message;
+      }
+    } else if (id === "website") {
+      try {
+        const r = await testWebsiteConnection();
+        message = `Read access to ${r.projectId} OK — ${r.users} customer account(s), ${r.orders} order(s).`;
       } catch (error) {
         ok = false;
         message = (error as Error).message;

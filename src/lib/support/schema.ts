@@ -65,6 +65,7 @@ export interface TicketMessage {
   authorName: string;
   body: string;
   internal: boolean;
+  emailStatus: "sent" | "failed" | "skipped" | "pending" | "not_applicable" | null;
   attachments: TicketAttachment[];
   createdAt: string | null;
 }

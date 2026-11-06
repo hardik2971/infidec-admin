@@ -6,6 +6,7 @@ import { logActivity } from "@/lib/activity";
 import { docId, failure, type Result } from "@/lib/actions";
 import { assertPermission } from "@/lib/auth/session";
 import { CUSTOMER_STATUSES, ORDER_STATUSES, ORDER_STATUS_LABELS, customerSchema, orderSchema, type OrderStatus } from "@/lib/sales/schema";
+import { notifyCustomerRegistration, notifyPurchase } from "@/lib/email/notify";
 import { addCustomerNote, createOrder, saveCustomer, setCustomerStatus, setLicenseStatus, setOrderStatus } from "@/lib/sales/service";
 
 export async function saveCustomerAction(input: { id?: string; values: unknown }): Promise<Result<{ id: string }>> {
@@ -14,6 +15,7 @@ export async function saveCustomerAction(input: { id?: string; values: unknown }
     const actor = await assertPermission(id ? "customers:edit" : "customers:create");
     const values = customerSchema.parse(input.values);
     const savedId = await saveCustomer(values, actor.uid, id);
+    if (!id) await notifyCustomerRegistration(savedId, actor.uid);
     await logActivity({ action: id ? "customer.updated" : "customer.created", actorId: actor.uid, actorEmail: actor.email, targetType: "customer", targetId: savedId, summary: `${id ? "Updated" : "Created"} customer ${values.email}` });
     refresh();
     return { ok: true, id: savedId, message: id ? "Customer updated." : "Customer created." };
@@ -52,6 +54,7 @@ export async function createOrderAction(values: unknown): Promise<Result<{ id: s
     const actor = await assertPermission("orders:create");
     const data = orderSchema.parse(values);
     const { id, licenseId } = await createOrder(data, actor.uid);
+    const email = licenseId ? await notifyPurchase(id, actor.uid) : null;
     await logActivity({
       action: "order.created",
       actorId: actor.uid,
@@ -62,7 +65,7 @@ export async function createOrderAction(values: unknown): Promise<Result<{ id: s
       summary: `Recorded ${data.channel} order (${data.status})${licenseId ? " and issued a license" : ""}`,
     });
     refresh();
-    return { ok: true, id, message: licenseId ? "Order recorded and license issued." : "Order recorded." };
+    return { ok: true, id, message: licenseId ? `Order recorded and license issued${email?.status === "sent" ? " — confirmation emailed" : ""}.` : "Order recorded." };
   } catch (error) {
     return failure(error, "order create");
   }
@@ -73,6 +76,7 @@ export async function setOrderStatusAction(input: { id: string; status: OrderSta
     const actor = await assertPermission("orders:edit");
     const v = z.object({ id: docId, status: z.enum(ORDER_STATUSES) }).parse(input);
     const r = await setOrderStatus(v.id, v.status, actor.uid);
+    if (r.licenseIssued) await notifyPurchase(v.id, actor.uid);
     await logActivity({
       action: "order.status_changed",
       actorId: actor.uid,

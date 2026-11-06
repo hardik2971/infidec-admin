@@ -24,7 +24,8 @@ type ActivityDomain =
   | "listing"
   | "ticket"
   | "refund"
-  | "integration";
+  | "integration"
+  | "report";
 
 /** "<domain>.<event>", e.g. "product.created". */
 export type ActivityAction = `${ActivityDomain}.${string}`;

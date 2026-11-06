@@ -23,8 +23,16 @@ export function formatBytes(bytes: number) {
   return `${(bytes / 1024 ** i).toFixed(i === 0 ? 0 : 1)} ${units[i]}`;
 }
 
+/**
+ * Business time zone for every displayed date. Fixed (not the machine's zone) so the server
+ * (UTC in production) and the browser render identical text — otherwise React hydration fails.
+ */
+export const APP_TIME_ZONE = process.env.NEXT_PUBLIC_APP_TIME_ZONE || "Asia/Kolkata";
+
+const dateTimeFormat = new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short", timeZone: APP_TIME_ZONE });
+
 export function formatDateTime(value: string | Date | null | undefined) {
   if (!value) return "—";
   const d = typeof value === "string" ? new Date(value) : value;
-  return new Intl.DateTimeFormat("en-GB", { dateStyle: "medium", timeStyle: "short" }).format(d);
+  return dateTimeFormat.format(d);
 }

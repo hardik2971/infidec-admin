@@ -8,6 +8,7 @@ import { assertPermission } from "@/lib/auth/session";
 import { lookupSale } from "@/lib/integrations/envato";
 import { verifyPurchaseCode, type VerificationOutcome } from "@/lib/licenses/verification";
 import { clientIp, rateLimit } from "@/lib/rate-limit";
+import { notifyLicenseVerified } from "@/lib/email/notify";
 import { recordVerifiedSale } from "@/lib/sales/service";
 import { headers } from "next/headers";
 
@@ -73,8 +74,14 @@ export async function recordSaleAction(input: z.input<typeof recordInput>): Prom
       productId: v.productId,
       summary: `Recorded verified Envato sale (code …${v.code.slice(-4)}, buyer ${sale.buyer}, ${sale.license})`,
     });
+    const email = await notifyLicenseVerified(r.licenseId, actor.uid);
     refresh();
-    return { ok: true, customerId: r.customerId, licenseId: r.licenseId, message: "Sale recorded: customer, order and license created." };
+    return {
+      ok: true,
+      customerId: r.customerId,
+      licenseId: r.licenseId,
+      message: `Sale recorded: customer, order and license created${email.status === "sent" ? " — customer emailed" : ""}.`,
+    };
   } catch (error) {
     return failure(error, "record sale");
   }

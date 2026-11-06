@@ -1,5 +1,5 @@
 import { Timestamp } from "firebase-admin/firestore";
-import { ChevronRight, LogIn, LogOut, ShieldAlert, ShieldCheck, UserCog, type LucideIcon } from "lucide-react";
+import { ChevronRight, FileDown, LogIn, LogOut, ShieldAlert, ShieldCheck, UserCog, type LucideIcon } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
@@ -13,6 +13,7 @@ import { requirePermission } from "@/lib/auth/session";
 import { adminDb } from "@/lib/firebase/admin";
 import { COLLECTIONS } from "@/lib/firebase/collections";
 import { formatDateTime } from "@/lib/format";
+import { hasPermission } from "@/lib/rbac/permissions";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = { title: "Activity Logs" };
@@ -30,7 +31,7 @@ const CATEGORIES = {
   sales: { label: "Customers & orders", domains: ["customer", "order"] },
   licenses: { label: "Licenses & downloads", domains: ["license", "download", "envato"] },
   support: { label: "Support & refunds", domains: ["ticket", "refund"] },
-  system: { label: "Settings & integrations", domains: ["settings", "integration", "system"] },
+  system: { label: "Settings & integrations", domains: ["settings", "integration", "system", "report"] },
 } as const;
 type Category = keyof typeof CATEGORIES;
 
@@ -43,7 +44,8 @@ const ICONS: Record<string, { icon: LucideIcon; className: string }> = {
 const DEFAULT_ICON = { icon: UserCog, className: "bg-primary/10 text-primary" };
 
 async function ActivityList({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
-  await requirePermission("activity:view");
+  const session = await requirePermission("activity:view");
+  const canExport = hasPermission(session.permissions, "activity:export");
   const sp = await searchParams;
   const category: Category = typeof sp.type === "string" && sp.type in CATEGORIES ? (sp.type as Category) : "all";
   const before = typeof sp.before === "string" && !Number.isNaN(Date.parse(sp.before)) ? new Date(sp.before) : null;
@@ -93,6 +95,13 @@ async function ActivityList({ searchParams }: { searchParams: Promise<Record<str
             <Link href={key === "all" ? "/system/activity" : `/system/activity?type=${key}`}>{CATEGORIES[key].label}</Link>
           </Button>
         ))}
+        {canExport && (
+          <Button asChild size="sm" variant="outline" className="ml-auto">
+            <a href="/api/activity/export" download title="Last 30 days as CSV">
+              <FileDown /> Export CSV (30 days)
+            </a>
+          </Button>
+        )}
       </div>
 
       {entries.length === 0 ? (

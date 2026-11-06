@@ -5,6 +5,7 @@ import { z } from "zod";
 import { logActivity } from "@/lib/activity";
 import { AuthorizationError, assertPermission } from "@/lib/auth/session";
 import { VERSION_STATUSES, VERSION_STATUS_LABELS, versionSchema, type VersionStatus } from "@/lib/packages/schema";
+import { notifyVersion } from "@/lib/email/notify";
 import { createVersion, deleteVersion, setVersionStatus, updateVersion } from "@/lib/packages/versions";
 import { ProductError } from "@/lib/products/service";
 
@@ -100,6 +101,26 @@ export async function deleteVersionAction(versionId: string): Promise<Result> {
     });
     refresh();
     return { ok: true, message: `Version ${r.version} deleted.` };
+  } catch (error) {
+    return failure(error);
+  }
+}
+
+export async function notifyVersionAction(versionId: string): Promise<Result> {
+  try {
+    const actor = await assertPermission("versions:publish");
+    const r = await notifyVersion(id.parse(versionId), actor.uid);
+    await logActivity({
+      action: "version.notified",
+      actorId: actor.uid,
+      actorEmail: actor.email,
+      targetType: "version",
+      targetId: versionId,
+      summary: `Emailed ${r.sent} of ${r.recipients} license holder(s) (${r.template.replace("_", " ")})${r.failed ? `, ${r.failed} failed` : ""}`,
+    });
+    refresh();
+    if (r.recipients === 0) return { ok: true, message: "No customers hold an active license for this product yet." };
+    return { ok: true, message: `Emailed ${r.sent} of ${r.recipients} license holder(s).${r.failed ? ` ${r.failed} failed — see SMTP email logs.` : ""}` };
   } catch (error) {
     return failure(error);
   }

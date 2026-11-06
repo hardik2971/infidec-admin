@@ -1,6 +1,6 @@
 "use client";
 
-import { Copy, Download, FileArchive, KeyRound, Link2, UserSearch } from "lucide-react";
+import { Copy, Download, FileArchive, KeyRound, Link2, Mail, UserSearch } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
@@ -38,16 +38,20 @@ export function DownloadsPanel({
   const byProduct = new Map<string, PackageRecord[]>();
   packages.forEach((p) => byProduct.set(p.productId, [...(byProduct.get(p.productId) ?? []), p]));
 
-  function issue(pkg: PackageRecord) {
+  function issue(pkg: PackageRecord, email = false) {
     if (!customer) return;
     setIssuing(pkg.id);
     startTransition(async () => {
-      const r = await issueCustomerDownloadAction({ customerId: customer.id, packageId: pkg.id });
+      const r = await issueCustomerDownloadAction({ customerId: customer.id, packageId: pkg.id, email });
       setIssuing(null);
-      if (r.ok) {
-        setLinks((l) => ({ ...l, [pkg.id]: { url: r.url, minutes: r.expiresInMinutes } }));
-        toast.success(`Link created — valid for ${r.expiresInMinutes} minutes.`);
-      } else toast.error(r.error);
+      if (!r.ok) {
+        toast.error(r.error);
+        return;
+      }
+      setLinks((l) => ({ ...l, [pkg.id]: { url: r.url, minutes: r.expiresInMinutes } }));
+      if (!email) toast.success(`Link created — valid for ${r.expiresInMinutes} minutes.`);
+      else if (r.emailed) toast.success(`Link emailed to ${customer.name} — valid for ${r.expiresInMinutes} minutes.`);
+      else toast.warning("Link created, but the email failed.", { description: r.emailError });
     });
   }
 
@@ -139,6 +143,11 @@ export function DownloadsPanel({
                             {canIssue && (
                               <Button size="sm" variant="outline" disabled={issuing === p.id || customer.status !== "active"} onClick={() => issue(p)}>
                                 {issuing === p.id ? <Spinner /> : <Link2 />} Generate link
+                              </Button>
+                            )}
+                            {canIssue && (
+                              <Button size="sm" variant="outline" disabled={issuing === p.id || customer.status !== "active"} onClick={() => issue(p, true)}>
+                                <Mail /> Email link
                               </Button>
                             )}
                           </div>
