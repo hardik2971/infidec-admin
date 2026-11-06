@@ -1,0 +1,181 @@
+rules_version = '2';
+
+// INFIDEC Marketplace Admin — Cloud Firestore security rules.
+//
+// Principles:
+//  * Deny by default. Every collection is listed explicitly.
+//  * The admin panel performs privileged writes server-side with the Admin SDK
+//    (which bypasses these rules) after verifying the staff session and permission.
+//  * Direct client access is limited to: staff reads gated by role permissions,
+//    and customers reading their own records (future customer portal).
+//  * Staff identity comes from custom claims set server-side:
+//      { staff: true, role: '<roleId>' }
+//  * Customers can never write verification status, entitlements, licenses,
+//    orders or download logs.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ---------- helpers ----------
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isStaff() {
+      return signedIn()
+        && request.auth.token.staff == true
+        && exists(/databases/$(database)/documents/staff/$(request.auth.uid))
+        && get(/databases/$(database)/documents/staff/$(request.auth.uid)).data.status == 'active';
+    }
+
+    function isSuperAdmin() {
+      return isStaff() && request.auth.token.role == 'super_admin';
+    }
+
+    function rolePermissions() {
+      return get(/databases/$(database)/documents/roles/$(request.auth.token.role)).data.permissions;
+    }
+
+    function can(permission) {
+      return isSuperAdmin() || (isStaff() && rolePermissions().hasAny(['*', permission]));
+    }
+
+    function isOwnCustomerRecord(customerId) {
+      return signedIn() && request.auth.uid == customerId;
+    }
+
+    // ---------- staff & access control ----------
+    match /staff/{uid} {
+      allow read: if (signedIn() && request.auth.uid == uid) || can('staff:view');
+      allow write: if false; // server-only (role & claim changes must stay in sync)
+    }
+
+    match /roles/{roleId} {
+      allow read: if isStaff();
+      allow write: if false; // server-only
+    }
+
+    match /permissions/{id} {
+      allow read: if isStaff();
+      allow write: if false;
+    }
+
+    match /users/{uid} {
+      allow read: if (signedIn() && request.auth.uid == uid) || can('customers:view');
+      allow write: if false;
+    }
+
+    // ---------- product catalogue ----------
+    match /products/{productId} {
+      allow read: if can('products:view');
+      allow write: if false; // via server actions with products:* permissions
+    }
+
+    match /productCategories/{id} {
+      allow read: if can('categories:view') || can('products:view');
+      allow write: if false;
+    }
+
+    match /marketplaces/{id} {
+      allow read: if isStaff();
+      allow write: if false;
+    }
+
+    match /productListings/{id} {
+      allow read: if can('listings:view');
+      allow write: if false;
+    }
+
+    match /productPackages/{id} {
+      allow read: if can('packages:view');
+      allow write: if false; // metadata is written by the server after upload validation
+    }
+
+    match /productVersions/{id} {
+      allow read: if can('versions:view');
+      allow write: if false;
+    }
+
+    match /productDocumentation/{id} {
+      allow read: if can('documentation:view')
+        || (resource.data.status == 'published' && resource.data.visibility == 'public');
+      allow write: if false;
+    }
+
+    match /productMedia/{id} {
+      allow read: if can('products:view');
+      allow write: if false;
+    }
+
+    // ---------- sales, customers & licensing ----------
+    match /customers/{customerId} {
+      allow read: if can('customers:view') || isOwnCustomerRecord(customerId);
+      allow write: if false;
+    }
+
+    match /orders/{orderId} {
+      allow read: if can('orders:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false;
+    }
+
+    match /orderItems/{id} {
+      allow read: if can('orders:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false;
+    }
+
+    match /licenses/{licenseId} {
+      allow read: if can('licenses:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false; // customers can never modify verification status
+    }
+
+    match /licenseVerifications/{id} {
+      allow read: if can('licenses:view');
+      allow write: if false;
+    }
+
+    match /downloadLogs/{id} {
+      allow read: if can('downloads:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false; // written by the download-authorization function only
+    }
+
+    // ---------- support & finance ----------
+    match /supportTickets/{ticketId} {
+      allow read: if can('support:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false;
+    }
+
+    match /refunds/{id} {
+      allow read: if can('refunds:view') || isOwnCustomerRecord(resource.data.customerId);
+      allow write: if false;
+    }
+
+    // ---------- system ----------
+    match /notifications/{id} {
+      allow read: if signedIn() && resource.data.recipientId == request.auth.uid;
+      allow write: if false;
+    }
+
+    match /activityLogs/{id} {
+      allow read: if can('activity:view');
+      allow write: if false; // append-only, server-side
+    }
+
+    match /integrationSettings/{id} {
+      allow read, write: if false; // contains credentials references — server-only
+    }
+
+    match /uploadSessions/{id} {
+      allow read, write: if false; // internal upload tracking, server-only
+    }
+
+    match /systemSettings/{id} {
+      allow read: if can('settings:view');
+      allow write: if false;
+    }
+
+    // Anything not matched above is denied.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

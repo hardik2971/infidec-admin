@@ -1,0 +1,86 @@
+rules_version = '2';
+
+// INFIDEC Marketplace Admin — Firebase Storage security rules.
+//
+// All product files are PRIVATE. Nobody reads source packages directly from
+// the client: staff and customers receive short-lived signed URLs generated
+// server-side after permission / entitlement checks (download authorization).
+//
+// Layout:
+//   products/{productId}/source-code/{versionId}/{file}.zip
+//   products/{productId}/documentation/{file}
+//   products/{productId}/media/{file}  and  media/screenshots/{file}
+//   products/{productId}/releases/{versionId}/{file}
+//   uploads/staging/{uid}/{uploadId}/{file}   (validated server-side, then moved)
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    function isStaff() {
+      return request.auth != null && request.auth.token.staff == true;
+    }
+
+    function hasRole(roles) {
+      return isStaff() && request.auth.token.role in roles;
+    }
+
+    function canUploadPackages() {
+      return hasRole(['super_admin', 'product_manager']);
+    }
+
+    function canUploadDocs() {
+      return hasRole(['super_admin', 'product_manager', 'documentation_manager']);
+    }
+
+    function maxMb(mb) {
+      return request.resource.size < mb * 1024 * 1024;
+    }
+
+    function isZip() {
+      return request.resource.contentType in ['application/zip', 'application/x-zip-compressed'];
+    }
+
+    function isImage() {
+      return request.resource.contentType.matches('image/(png|jpeg|webp|gif|svg\\+xml)');
+    }
+
+    // Source packages: no client reads ever; uploads only by authorized staff.
+    match /products/{productId}/source-code/{versionId}/{fileName} {
+      allow read: if false;
+      allow create: if canUploadPackages() && isZip() && maxMb(2048);
+      allow update, delete: if false; // replace/delete happen server-side with audit logging
+    }
+
+    // Documentation files (PDF / ZIP / Markdown).
+    match /products/{productId}/documentation/{allPaths=**} {
+      allow read: if false;
+      allow create: if canUploadDocs() && maxMb(500)
+        && (isZip() || request.resource.contentType in ['application/pdf', 'text/markdown', 'text/plain']);
+      allow update, delete: if false;
+    }
+
+    // Product media: staff can read previews; public serving goes through the server.
+    match /products/{productId}/media/{allPaths=**} {
+      allow read: if isStaff();
+      allow create: if canUploadPackages() && isImage() && maxMb(15);
+      allow update, delete: if false;
+    }
+
+    match /products/{productId}/releases/{versionId}/{allPaths=**} {
+      allow read: if false;
+      allow create: if canUploadPackages() && maxMb(100);
+      allow update, delete: if false;
+    }
+
+    // Staging area for resumable uploads; the server validates checksum/signature before promotion.
+    match /uploads/staging/{uid}/{allPaths=**} {
+      allow read: if false;
+      allow create: if isStaff() && request.auth.uid == uid && maxMb(2048);
+      allow delete: if isStaff() && request.auth.uid == uid;
+    }
+
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

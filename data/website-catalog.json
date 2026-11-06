@@ -1,0 +1,1743 @@
+{
+  "source": {
+    "website": "https://infidec.com",
+    "repository": "infidec-marketplace",
+    "commit": "d5a2f75ba95deb19f887d651bfa981d987a55b85",
+    "extractedAt": "2026-11-04T09:50:06.913Z"
+  },
+  "categories": [
+    {
+      "key": "add-ons",
+      "label": "Add-ons"
+    },
+    {
+      "key": "business-service",
+      "label": "Business and Service"
+    },
+    {
+      "key": "ecommerce-marketplace",
+      "label": "eCommerce and Marketplace"
+    },
+    {
+      "key": "education-lms",
+      "label": "Education and LMS"
+    },
+    {
+      "key": "health-fitness",
+      "label": "Health and Fitness"
+    }
+  ],
+  "products": [
+    {
+      "sourceSlug": "qwikmart-all-in-one-quick-commerce-ecommerce-platform",
+      "name": "QwikMart",
+      "title": "QwikMart - All-in-One Quick Commerce & eCommerce Platform with Multi-Store & Multi-Country",
+      "tagline": "All-in-One Quick Commerce & eCommerce Platform",
+      "productType": "app",
+      "categoryKey": "ecommerce-marketplace",
+      "shortDescription": "Launch 10-minute grocery delivery and a full online store from one platform — Flutter customer & rider apps, Next.js website and Admin, Store & Rider panels on a serverless Firebase backend.",
+      "fullDescription": "QwikMart is a multi-store Quick Commerce and eCommerce solution for launching, managing and scaling All-in-One grocery, retail, pharmacy and marketplace businesses from one system. Customers order daily essentials for delivery in minutes from the nearest store, or shop a wider catalogue delivered in 1–4 days — in the same app, with one toggle.\n\nThe platform includes a Flutter Customer App and Delivery Boy App (Android & iOS), a Next.js customer website and three web panels — Super Admin, Store and Delivery Boy — all running on Google Firebase. There is no PHP, MySQL, cron job or VPS to maintain: Cloud Functions, Firestore and App Hosting scale automatically and you pay only for what you use.\n\nDraw delivery zones on a map, assign stores, design the home screen per zone, take payments with native Razorpay checkout, track riders live on the map and verify every hand-over with a delivery OTP. Wallet, refunds, Refer & Earn, coupons, returns, support chat and AI-generated product content are built in.",
+      "productUrl": "https://infidec.com/products/qwikmart-all-in-one-quick-commerce-ecommerce-platform",
+      "version": "1.0.1",
+      "releaseDate": "2026-10-14",
+      "lastUpdate": "2026-10-20",
+      "platform": "Flutter 3.x",
+      "techStack": [
+        "Flutter",
+        "Next.js",
+        "Firebase",
+        "Cloud Functions",
+        "Cloud Firestore"
+      ],
+      "integrations": [
+        "Firebase Cloud Messaging",
+        "Firebase Phone Auth (OTP)",
+        "Razorpay + 8 Payment Gateways",
+        "SMTP Email",
+        "SMS Gateway Integration",
+        "Google Gemini AI",
+        "OpenStreetMap"
+      ],
+      "modules": [
+        "Customer App",
+        "Delivery Boy App",
+        "Website",
+        "Admin Panel",
+        "Store Panel",
+        "Delivery Boy Panel"
+      ],
+      "features": [
+        {
+          "title": "Customer App & Website",
+          "subtitle": "Flutter app for Android & iOS and a Next.js website that share the same cart, orders and wallet.",
+          "items": [
+            {
+              "title": "Quick & eCommerce Shopping",
+              "text": "Switch between minutes-delivery from the nearest store and the wider eCommerce catalogue with one toggle."
+            },
+            {
+              "title": "Dynamic Home Screen",
+              "text": "Banners, category rows, product sliders and brands published per zone from the Admin Home Builder."
+            },
+            {
+              "title": "Smart Search & Discovery",
+              "text": "Live suggestions, trending searches, filters by category, brand and price, and sorting."
+            },
+            {
+              "title": "Guest & Synced Cart",
+              "text": "Shop as a guest; the cart is kept when the customer logs in with phone OTP or e-mail."
+            },
+            {
+              "title": "Native Razorpay Checkout",
+              "text": "UPI apps, cards, net banking and wallets in the app, plus COD, Wallet and 8 online gateways."
+            },
+            {
+              "title": "Live Order Tracking",
+              "text": "Real-time order status and the rider moving on the map, with call and chat shortcuts."
+            },
+            {
+              "title": "Secure Delivery OTP",
+              "text": "A 6-digit code shown only to the customer confirms every hand-over."
+            },
+            {
+              "title": "Cancellations & Returns",
+              "text": "Cancel before packing; request returns with photos and get refunds to the wallet instantly."
+            },
+            {
+              "title": "Wallet, Cashback & Refer-Earn",
+              "text": "Top up, pay, receive refunds and referral rewards, and withdraw added money to the bank."
+            },
+            {
+              "title": "Ratings, Reviews & Support Chat",
+              "text": "Photo reviews on delivered products and realtime chat with support from any order."
+            },
+            {
+              "title": "Multi-Language & RTL",
+              "text": "English, Hindi and Arabic (right-to-left), light and dark mode."
+            },
+            {
+              "title": "Blog, FAQ & Policy Pages",
+              "text": "Content managed in the Admin Panel, including the pages Google Play requires."
+            }
+          ]
+        },
+        {
+          "title": "Delivery Boy App & Panel",
+          "subtitle": "Flutter rider app plus a browser panel for riders who prefer the web.",
+          "items": [
+            {
+              "title": "Self Registration",
+              "text": "Riders sign up with vehicle, zone, driving licence, ID proof and bank details; admins approve them."
+            },
+            {
+              "title": "Go Online & Live Location",
+              "text": "A location foreground service shares the rider's position while online — and stops when they go offline."
+            },
+            {
+              "title": "Guided Delivery Workflow",
+              "text": "Accept → picked up → out for delivery → deliver with OTP, with Google Maps navigation."
+            },
+            {
+              "title": "Auto or Manual Assignment",
+              "text": "Nearest online rider is assigned automatically, or riders pick orders from the zone's available list."
+            },
+            {
+              "title": "Earnings & COD Cash",
+              "text": "Commission per delivery, cash in hand from COD orders, deposits and payout history."
+            },
+            {
+              "title": "Wallet & Withdrawals",
+              "text": "Riders request withdrawals to their bank account; admins approve with a receipt."
+            }
+          ]
+        },
+        {
+          "title": "Admin Panel",
+          "subtitle": "The control centre for the whole business — role-based and realtime.",
+          "items": [
+            {
+              "title": "Live Dashboard & Analytics",
+              "text": "Revenue, orders, returns, order-status breakdown and trends, filterable by country, zone and date."
+            },
+            {
+              "title": "Complete Catalogue Management",
+              "text": "Categories, brands, attributes, taxes, products with variants, stock per store, bulk upload & update."
+            },
+            {
+              "title": "AI Product Content",
+              "text": "Generate descriptions and SEO text and translate into every language with Google Gemini."
+            },
+            {
+              "title": "Unified Order Management",
+              "text": "Status changes, rider assignment, payment status, invoices, self-pickup and support chat from the order."
+            },
+            {
+              "title": "Zones & Flexible Delivery Pricing",
+              "text": "Map-drawn zones with base and per-km fees, free delivery threshold, minimum order and surge hours."
+            },
+            {
+              "title": "Multi-Store & Multi-Country",
+              "text": "Stores per zone with opening hours and commission; countries with their own currency and dial code."
+            },
+            {
+              "title": "Visual Home Builder",
+              "text": "Drag-and-drop sections with a device preview; drafts stay private until you publish."
+            },
+            {
+              "title": "Coupons & Promotions",
+              "text": "Percent, fixed, free-delivery and cashback codes with limits, validity and zone/store/product targeting."
+            },
+            {
+              "title": "Returns, Refunds & Withdrawals",
+              "text": "Approve returns, schedule rider pickups and refund to wallet or the original payment method."
+            },
+            {
+              "title": "Notifications & E-mail",
+              "text": "Push campaigns, bulk e-mail with templates and a full mail log."
+            },
+            {
+              "title": "Website Contact Messages",
+              "text": "Contact-us form submissions with ticket numbers, notes and status."
+            },
+            {
+              "title": "Roles & Permissions",
+              "text": "Staff users with fine-grained permissions per module; secrets visible to the Super Admin only."
+            }
+          ]
+        },
+        {
+          "title": "Store Panel",
+          "subtitle": "A dedicated panel for every store owner, scoped to their own store by security rules.",
+          "items": [
+            {
+              "title": "Own Orders & Self-Pickup",
+              "text": "Process the store's orders and pickups in real time."
+            },
+            {
+              "title": "Products, Stock & Prices",
+              "text": "Add products (with admin approval) and override stock and prices per store."
+            },
+            {
+              "title": "Store Staff & Roles",
+              "text": "Create packers and managers with limited permissions."
+            },
+            {
+              "title": "Store Promotions & Reports",
+              "text": "Store-specific coupons, notifications and sales reports."
+            }
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "title": "Built In:",
+          "text": "Flutter, Next.js, Firebase (Cloud Functions, Firestore)"
+        },
+        {
+          "title": "Server Required:",
+          "text": "No VPS needed — Firebase Blaze plan (pay as you go) with App Hosting"
+        },
+        {
+          "title": "Third-Party Accounts Required:",
+          "text": "Firebase / Google Cloud, Google Play Console (Apple Developer for iOS), payment gateway (e.g. Razorpay), SMTP mail service; optional SMS gateway and Gemini API key. Maps use OpenStreetMap — no Google Maps key needed."
+        }
+      ],
+      "whatYouGet": [
+        "Flutter Customer App (Android & iOS)",
+        "Flutter Delivery Boy App (Android & iOS)",
+        "Next.js Customer Website",
+        "Next.js Admin, Store & Delivery Boy Panels",
+        "Firebase Backend: Cloud Functions, Rules & Indexes",
+        "Sample Data for Local Demo",
+        "Complete Online Documentation",
+        "Lifetime Product Updates"
+      ],
+      "demoLinks": [
+        {
+          "label": "Website Demo",
+          "url": "https://qwikmart-web--qwikmart-37299.asia-southeast1.hosted.app/"
+        },
+        {
+          "label": "Admin Panel Demo",
+          "url": "https://qwikmart-admin--qwikmart-37299.asia-southeast1.hosted.app/"
+        }
+      ],
+      "docsUrl": "https://infidec.com/docs/qwikmart",
+      "changelogUrl": "https://infidec.com/docs/qwikmart/docs/changelog",
+      "pricing": {
+        "currency": "INR",
+        "regular": 1799,
+        "extended": 74799,
+        "compareAt": 8299
+      },
+      "seo": {
+        "title": "QwikMart – All-in-One Quick Commerce & eCommerce Platform",
+        "description": "Launch 10-minute grocery delivery and a full online store from one platform — Flutter customer & rider apps, Next.js website and Admin, Store & Rider panels on ",
+        "canonicalUrl": "https://infidec.com/products/qwikmart-all-in-one-quick-commerce-ecommerce-platform"
+      },
+      "media": {
+        "thumbnail": {
+          "url": "https://infidec.com/images/qwikmart-banner-923x470.webp",
+          "alt": "QwikMart – All-in-One Quick Commerce & eCommerce Platform"
+        },
+        "screenshots": [
+          {
+            "url": "https://infidec.com/images/qwikmart/01-two-in-one.webp",
+            "alt": "QwikMart runs hyperlocal quick commerce and eCommerce in one app with one catalogue and one admin panel",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/02-ecosystem.webp",
+            "alt": "QwikMart ecosystem: customer website, Admin, Store and Delivery Boy panels, Customer App and Delivery Boy App",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/03-tech-stack.webp",
+            "alt": "QwikMart tech stack: Flutter, Next.js 15, Firebase Cloud Functions, Firestore, Authentication, Storage, Cloud Messaging, App Hosting, Razorpay and 8 payment gateways",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/04-workflow.webp",
+            "alt": "QwikMart order workflow: customer orders, store packs, rider assigned, live tracking, OTP delivery",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/05-shopping.webp",
+            "alt": "Quick commerce and eCommerce shopping on the QwikMart website and app",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/06-search.webp",
+            "alt": "Smart search, category rails, filters and product detail pages in the QwikMart app",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/07-payments.webp",
+            "alt": "Native Razorpay checkout plus Stripe, PayPal, PhonePe, Cashfree, Paystack, PayTabs, Midtrans, Wallet and COD",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/08-tracking.webp",
+            "alt": "Live order tracking with the rider on the map in the QwikMart customer app",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/09-otp.webp",
+            "alt": "Secure delivery with a 6-digit OTP shown only to the customer",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/10-wallet.webp",
+            "alt": "QwikMart wallet with instant refunds, cashback and Refer & Earn rewards",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/11-rider.webp",
+            "alt": "QwikMart Delivery Boy App: registration, go online with live location and guided delivery workflow",
+            "section": "Delivery Boy App"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/12-earnings.webp",
+            "alt": "Rider earnings, COD cash in hand and withdrawals in the QwikMart Delivery Boy App",
+            "section": "Delivery Boy App"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/13-dashboard.webp",
+            "alt": "QwikMart admin dashboard with revenue, orders and order-status analytics",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/14-orders.webp",
+            "alt": "Unified order management with rider assignment, live map and invoices",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/15-zones.webp",
+            "alt": "Delivery zones drawn on the map with base, per-km, free-delivery and surge pricing",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/16-home-builder.webp",
+            "alt": "Visual Home Builder for zone-wise Quick and eCommerce home layouts",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/17-catalogue.webp",
+            "alt": "Product catalogue with variants, bulk upload and Google Gemini AI product content",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/18-roles.webp",
+            "alt": "Roles, permissions and the dedicated Store panel",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/19-settings.webp",
+            "alt": "System settings for payment gateways, SMTP, SMS, push, AI, wallet, referral and delivery",
+            "section": "Admin & Store Panel"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/20-multi-country.webp",
+            "alt": "Multi-store, multi-zone, multi-country and multi-language support with RTL",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/21-requirements.webp",
+            "alt": "Requirements: Firebase Blaze plan, Flutter, Google Play Console, optional payment gateway, SMTP and SMS; OpenStreetMap maps",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/qwikmart/22-what-you-get.webp",
+            "alt": "Everything included: Customer App, Delivery Boy App, website, Admin, Store and Delivery Boy panels, Firebase backend, docs and updates",
+            "section": "Requirements"
+          }
+        ]
+      },
+      "liveVerification": {
+        "checkedAt": "2026-11-04T09:50:06.210Z",
+        "ok": true,
+        "mismatches": []
+      }
+    },
+    {
+      "sourceSlug": "go4market-multi-vendor-quick-commerce-ecommerce-platform",
+      "name": "Go4Market",
+      "title": "Go4Market - Multi-Vendor Quick Commerce & eCommerce Platform with Grocery, Food, Pharmacy & Shopping",
+      "tagline": "Multi-Vendor Quick Commerce & eCommerce Platform",
+      "productType": "app",
+      "categoryKey": "ecommerce-marketplace",
+      "shortDescription": "Launch a multi-vendor marketplace for groceries, food, medicines and shopping with 15/30-minute delivery — Flutter Customer & Partner apps, a Flutter Web storefront and Admin, Seller & Delivery panels on a serverless Firebase backend.",
+      "fullDescription": "Go4Market is a multi-vendor quick commerce and eCommerce platform that brings four businesses into one marketplace: Grocery, Food, Pharmacy and Shopping. Local sellers list their products, customers order from one cart, and orders arrive in 15 or 30 minutes, in a scheduled slot or ready for self-pickup at the store.\n\nThe package includes two Flutter mobile apps — the Customer App and the Partner App, where sellers and delivery partners pick their role at sign-up — plus a Flutter Web customer website and Flutter Web Admin, Seller and Delivery panels. Everything runs on Google Firebase: Cloud Functions (TypeScript), Cloud Firestore, Authentication, Storage and Cloud Messaging. There is no PHP, MySQL, VPS or cron job to maintain.\n\nPrices, coupons, wallet, stock and payments are calculated on the server. Riders are tracked live on OpenStreetMap, every hand-over is verified with a delivery OTP, and COD cash, seller commissions, rider earnings, withdrawals, fund transfers and salaries are settled automatically. Sellers also get a POS with barcode scanning for walk-in customers.",
+      "productUrl": "https://infidec.com/products/go4market-multi-vendor-quick-commerce-ecommerce-platform",
+      "version": "1.0.0",
+      "releaseDate": "2026-10-28",
+      "lastUpdate": "2026-10-29",
+      "platform": "Flutter 3.x",
+      "techStack": [
+        "Flutter",
+        "Flutter Web",
+        "Firebase",
+        "Cloud Functions",
+        "Cloud Firestore"
+      ],
+      "integrations": [
+        "Firebase Cloud Messaging (App & Web Push)",
+        "Firebase Auth (Email, Google & Phone OTP)",
+        "Razorpay",
+        "Stripe",
+        "PayPal",
+        "Google Gemini AI",
+        "OpenStreetMap",
+        "SMTP Email",
+        "Twilio / MSG91 / Fast2SMS (optional)"
+      ],
+      "modules": [
+        "Customer App",
+        "Partner App (Seller + Delivery)",
+        "Website",
+        "Admin Panel",
+        "Seller Panel",
+        "Delivery Panel"
+      ],
+      "features": [
+        {
+          "title": "Customer App & Website",
+          "subtitle": "Flutter app for Android and a Flutter Web storefront that share the same account, cart, orders and wallet.",
+          "items": [
+            {
+              "title": "Four Shopping Modules",
+              "text": "Grocery, Food, Pharmacy and Shopping, each with its own home page and colours."
+            },
+            {
+              "title": "Quick, Scheduled & Pickup Delivery",
+              "text": "15 or 30-minute delivery with a live countdown, scheduled slots or self-pickup at the store."
+            },
+            {
+              "title": "Smart & Voice Search",
+              "text": "Live suggestions, trending searches and voice search for several items at once, with filters, sorting and grid or list view."
+            },
+            {
+              "title": "Food Add-ons & Veg Marks",
+              "text": "Optional add-ons on dishes, veg/non-veg marks and custom product fields."
+            },
+            {
+              "title": "Flexible Payments",
+              "text": "Razorpay (UPI, cards, net banking), Stripe, PayPal, wallet with partial payment, or cash on delivery."
+            },
+            {
+              "title": "Live Order Tracking",
+              "text": "Order journey and the rider moving on OpenStreetMap, with a call-rider shortcut."
+            },
+            {
+              "title": "Delivery OTP",
+              "text": "A one-time code shown only to the customer confirms every hand-over."
+            },
+            {
+              "title": "Wallet, Membership & Subscriptions",
+              "text": "Refunds and cashback to the wallet, membership plans with free delivery, and daily, weekly or monthly product subscriptions."
+            },
+            {
+              "title": "Coupons & Refer-Earn",
+              "text": "Platform and seller coupons, daily offers and wallet credit for both referrer and friend."
+            },
+            {
+              "title": "Returns & Reorder",
+              "text": "Request returns with photos, refunds to the wallet, and one-tap reorder."
+            },
+            {
+              "title": "Email, Google & Phone OTP Login",
+              "text": "Three sign-in methods, plus guest browsing before checkout."
+            },
+            {
+              "title": "Languages & Themes",
+              "text": "Website in English, Hindi, Gujarati and Arabic (RTL); apps in English and Hindi; light and dark mode."
+            }
+          ]
+        },
+        {
+          "title": "Partner App & Delivery Panel",
+          "subtitle": "One Flutter app for sellers and delivery partners, plus browser panels for both roles.",
+          "items": [
+            {
+              "title": "Role Choice at Sign-up",
+              "text": "Sell on Go4Market or Deliver with Go4Market — admins approve each partner."
+            },
+            {
+              "title": "Go Online & Live Location",
+              "text": "Riders share their location only while online; going offline stops tracking."
+            },
+            {
+              "title": "Nearby Deliveries",
+              "text": "Accept orders from the available pool or get auto-assigned as the nearest online rider."
+            },
+            {
+              "title": "Swipe-to-Confirm Flow",
+              "text": "Picked up → out for delivery → delivered with customer OTP and COD confirmation."
+            },
+            {
+              "title": "Earnings & Cash in Hand",
+              "text": "Per-order or monthly pay, daily earnings, COD cash in hand and settlement history."
+            },
+            {
+              "title": "Withdrawals",
+              "text": "Riders and sellers request payouts by bank or UPI; admins approve them."
+            }
+          ]
+        },
+        {
+          "title": "Admin Panel",
+          "subtitle": "The control centre for the whole marketplace — realtime and role-based.",
+          "items": [
+            {
+              "title": "Live Dashboard & Module Switcher",
+              "text": "Revenue, orders, order status and top sellers, re-themed and filtered per module."
+            },
+            {
+              "title": "Unified Order Management",
+              "text": "Status changes, rider assignment, live map, invoices, self-pickup and POS orders."
+            },
+            {
+              "title": "Catalogue & AI Content",
+              "text": "Infinite categories, brands, attributes, taxes, variants, bulk upload and Google Gemini descriptions."
+            },
+            {
+              "title": "Sellers & Delivery Partners",
+              "text": "Requests, approvals, commission, seller policies, rider fleets, cash collection and salary."
+            },
+            {
+              "title": "Dynamic Home Page",
+              "text": "Home sliders, offer banners, popups and featured sections per module."
+            },
+            {
+              "title": "Finance",
+              "text": "Wallet transactions, withdrawals, fund transfers, payouts and payment transactions."
+            },
+            {
+              "title": "Marketing",
+              "text": "Coupons, push campaigns, membership plans, subscriptions and abandoned carts."
+            },
+            {
+              "title": "Reports",
+              "text": "Sales, product, category, seller, commission and POS reports."
+            },
+            {
+              "title": "Content & SEO",
+              "text": "Blogs, FAQs, policy pages, email templates, SEO settings and an XML sitemap."
+            },
+            {
+              "title": "Roles & Permissions",
+              "text": "Staff users with permission-based navigation."
+            },
+            {
+              "title": "Force Update",
+              "text": "Set minimum and latest app versions for the Customer and Partner apps."
+            },
+            {
+              "title": "System Health",
+              "text": "Integration status, counts and backups from one screen."
+            }
+          ]
+        },
+        {
+          "title": "Seller Panel",
+          "subtitle": "A dedicated panel and app section for every store, scoped to its own data by security rules.",
+          "items": [
+            {
+              "title": "Orders & Self-Pickup",
+              "text": "Accept, pack and hand over orders, or serve pickups with secure codes."
+            },
+            {
+              "title": "POS with Barcode",
+              "text": "Bill walk-in customers by cash, card or UPI, with barcode scanning and receipts."
+            },
+            {
+              "title": "Products & Stock",
+              "text": "Add products with photos, variants, price, MRP and AI descriptions; restock in a tap."
+            },
+            {
+              "title": "Own Riders, Coupons & Reports",
+              "text": "Run your own delivery fleet or request a Go4Market rider, create store coupons and view sales reports."
+            }
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "title": "Built In:",
+          "text": "Flutter, Flutter Web, Firebase (Cloud Functions in TypeScript, Firestore)"
+        },
+        {
+          "title": "Server Required:",
+          "text": "No VPS needed — Firebase Blaze plan (pay as you go) with Firebase Hosting"
+        },
+        {
+          "title": "Third-Party Accounts Required:",
+          "text": "Firebase / Google Cloud, Google Play Console, payment gateway (Razorpay, Stripe or PayPal), SMTP mail service; optional SMS gateway (Twilio, MSG91 or Fast2SMS) and Gemini API key. Maps use OpenStreetMap — no Google Maps key needed."
+        }
+      ],
+      "whatYouGet": [
+        "Flutter Customer App",
+        "Flutter Partner App (Seller + Delivery)",
+        "Flutter Web Customer Website",
+        "Flutter Web Admin, Seller & Delivery Panels",
+        "Firebase Backend: Cloud Functions, Rules & Indexes",
+        "Seed Script with Demo Data",
+        "Complete Online Documentation",
+        "Lifetime Product Updates"
+      ],
+      "demoLinks": [
+        {
+          "label": "Website Demo",
+          "url": "https://go4market.web.app/"
+        },
+        {
+          "label": "Admin Panel Demo",
+          "url": "https://go4market-admin.web.app/"
+        },
+        {
+          "label": "Seller Panel Demo",
+          "url": "https://go4market-seller.web.app/"
+        },
+        {
+          "label": "Delivery Panel Demo",
+          "url": "https://go4market-delivery.web.app/"
+        }
+      ],
+      "docsUrl": "https://infidec.com/docs/go4market",
+      "changelogUrl": "https://infidec.com/docs/go4market/docs/changelog",
+      "pricing": {
+        "currency": "INR",
+        "regular": 1999,
+        "extended": 83199,
+        "compareAt": 8999
+      },
+      "seo": {
+        "title": "Go4Market – Multi-Vendor Quick Commerce & eCommerce Platform",
+        "description": "Launch a multi-vendor marketplace for groceries, food, medicines and shopping with 15/30-minute delivery — Flutter Customer & Partner apps, a Flutter Web storef",
+        "canonicalUrl": "https://infidec.com/products/go4market-multi-vendor-quick-commerce-ecommerce-platform"
+      },
+      "media": {
+        "thumbnail": {
+          "url": "https://infidec.com/images/go4market-banner-923x470.webp",
+          "alt": "Go4Market – Multi-Vendor Quick Commerce & eCommerce Platform"
+        },
+        "screenshots": [
+          {
+            "url": "https://infidec.com/images/go4market/01-four-modules.webp",
+            "alt": "Go4Market runs Grocery, Food, Pharmacy and Shopping modules in one multi-vendor app with one cart and one admin panel",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/02-ecosystem.webp",
+            "alt": "Go4Market ecosystem: Customer App, Partner App for sellers and delivery partners, website and Admin, Seller and Delivery panels",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/03-tech-stack.webp",
+            "alt": "Go4Market tech stack: Flutter, Flutter Web, Firebase Cloud Functions, Firestore, Authentication, Storage, Cloud Messaging, Hosting, Razorpay, Stripe, PayPal and COD",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/04-workflow.webp",
+            "alt": "Go4Market order workflow: customer orders, seller confirms and packs, rider assigned, live tracking, OTP delivery and automatic settlement",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/05-shopping.webp",
+            "alt": "Grocery, food, pharmacy and shopping on the Go4Market website and customer app",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/06-search.webp",
+            "alt": "Smart search, voice search for several items at once, filters, food add-ons and product pages",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/07-payments.webp",
+            "alt": "Checkout with 15 or 30-minute, scheduled or self-pickup delivery and Razorpay, Stripe, PayPal, wallet or COD",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/08-tracking.webp",
+            "alt": "Live order tracking with the rider on OpenStreetMap and a quick-delivery countdown",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/09-otp.webp",
+            "alt": "Secure delivery with a 4-digit OTP shown only to the customer",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/10-wallet.webp",
+            "alt": "Go4Market wallet with partial payment, refunds, Refer & Earn, membership plans and subscriptions",
+            "section": "Customer App & Website"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/11-rider.webp",
+            "alt": "Go4Market Partner App for delivery partners: go online, accept nearby deliveries and swipe through pickup to delivery",
+            "section": "Partner App"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/12-earnings.webp",
+            "alt": "Rider earnings, COD cash in hand, delivery history and withdrawals in the Partner App",
+            "section": "Partner App"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/13-dashboard.webp",
+            "alt": "Go4Market admin dashboard with revenue, orders, order status and module switcher",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/14-orders.webp",
+            "alt": "Unified order management with rider assignment, live map, cash collection and invoices",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/15-modules.webp",
+            "alt": "Modules with their own colours, cities with delivery radius and live rider map",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/16-featured-sections.webp",
+            "alt": "Home sliders, offer banners, popups and featured sections for a dynamic home page per module",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/17-catalogue.webp",
+            "alt": "Product catalogue with infinite categories, variants, food add-ons, bulk upload and Google Gemini AI descriptions",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/18-seller-pos.webp",
+            "alt": "Seller panel and Partner App with POS and barcode scanning, plus roles and permissions for staff",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/19-settings.webp",
+            "alt": "Settings for payments, delivery, communication, SEO, app versions and force update",
+            "section": "Admin & Seller Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/20-languages.webp",
+            "alt": "Website and panels in English, Hindi, Gujarati and Arabic with right-to-left layout; apps in English and Hindi; light and dark mode",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/21-requirements.webp",
+            "alt": "Requirements: Firebase Blaze plan, Flutter SDK, Node.js 22, Google Play Console, payment gateway and SMTP; optional SMS gateway and Gemini key; OpenStreetMap maps",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/go4market/22-what-you-get.webp",
+            "alt": "Everything included: Customer App, Partner App, website, Admin, Seller and Delivery panels, Firebase backend, docs and updates",
+            "section": "Requirements"
+          }
+        ]
+      },
+      "liveVerification": {
+        "checkedAt": "2026-11-04T09:50:06.904Z",
+        "ok": true,
+        "mismatches": []
+      }
+    },
+    {
+      "sourceSlug": "go4foodie-restaurant-pos-qr-online-ordering-platform",
+      "name": "Go4Foodie",
+      "title": "Go4Foodie - All-in-One Restaurant POS, QR Table Ordering & Online Food Ordering Platform on Firebase",
+      "tagline": "All-in-One Restaurant POS, QR Ordering & Online Food Ordering",
+      "productType": "app",
+      "categoryKey": "ecommerce-marketplace",
+      "shortDescription": "Run dine-in, QR table ordering, take-away and reservations from one platform — a live floor plan and table POS, a Next.js ordering website, a Flutter app with Customer, Restaurant and Owner modes, and a Flutter Web admin panel on a serverless Firebase backend.",
+      "fullDescription": "Go4Foodie is an all-in-one restaurant platform for dine-in, QR table ordering, take-away and reservations. Guests order on the website or by scanning the QR code on their table, staff run the floor and the bill from a live POS, and owners follow revenue, tables and team from anywhere — all on one menu, one set of tables and one order history.\n\nThe package includes a Next.js customer website, a Flutter Web Admin Panel, and one Flutter mobile app (Android & iOS) with three modes chosen on the first screen: Customer App, Restaurant App for waiters and cashiers, and Owner App. Everything runs on Google Firebase — one Cloud Function API, Cloud Firestore, Authentication, Storage, Hosting and App Hosting — so there is no VPS, PHP, MySQL or cron job to maintain.\n\nOpen a table, send items to the kitchen with a printed KOT, void, add discount, tax, service and tip, split the payment across cash, card and UPI, merge tables and close the bill — the floor updates live for everyone. Online payments with Razorpay, Stripe or PayPal, gift cards and coupons, branded e-mails, inventory alerts, table analytics, reports and an audit log are built in.",
+      "productUrl": "https://infidec.com/products/go4foodie-restaurant-pos-qr-online-ordering-platform",
+      "version": "1.0.0",
+      "releaseDate": "2026-10-22",
+      "lastUpdate": "2026-10-22",
+      "platform": "Flutter 3.x",
+      "techStack": [
+        "Flutter",
+        "Next.js",
+        "Firebase",
+        "Cloud Functions",
+        "Cloud Firestore"
+      ],
+      "integrations": [
+        "Razorpay",
+        "Stripe",
+        "PayPal",
+        "SMTP Email",
+        "Firebase Authentication",
+        "Cloud Storage",
+        "QR Codes"
+      ],
+      "modules": [
+        "Customer App",
+        "Restaurant App",
+        "Owner App",
+        "Website",
+        "Admin Panel",
+        "QR Table Ordering"
+      ],
+      "features": [
+        {
+          "title": "Customer Website & App",
+          "subtitle": "Next.js website and the Customer mode of the Flutter app share the same menu, orders and bookings.",
+          "items": [
+            {
+              "title": "Online Take-Away",
+              "text": "Order for pickup now or schedule a later slot with lead time and cut-off."
+            },
+            {
+              "title": "QR Table Ordering",
+              "text": "Guests scan the table QR, order from the menu and the table session opens automatically."
+            },
+            {
+              "title": "Table Bookings & Events",
+              "text": "Live slot availability for table bookings and enquiries for private events."
+            },
+            {
+              "title": "Gift Cards & Coupons",
+              "text": "Buy gift cards and coupons online; codes are e-mailed instantly."
+            },
+            {
+              "title": "Online Payments",
+              "text": "Razorpay, Stripe and PayPal with a provider chooser, or pay at the restaurant."
+            },
+            {
+              "title": "Order & Booking History",
+              "text": "Customers follow their orders and bookings and manage their profile in the app."
+            }
+          ]
+        },
+        {
+          "title": "Restaurant App (POS)",
+          "subtitle": "The staff mode of the mobile app for waiters, cashiers and managers.",
+          "items": [
+            {
+              "title": "Live Floor",
+              "text": "Every table with its state, guests, waiter and running bill."
+            },
+            {
+              "title": "Table Bill & KOT",
+              "text": "Add items, send a kitchen order ticket and void items."
+            },
+            {
+              "title": "Split & Part Payments",
+              "text": "Take cash, card, UPI or wallet payments in parts and close the table."
+            },
+            {
+              "title": "Kitchen & Service Board",
+              "text": "Move orders from pending to preparing, ready and completed."
+            },
+            {
+              "title": "Reservations & Menu",
+              "text": "Confirm bookings and switch dishes on or off during service."
+            },
+            {
+              "title": "Duty Status",
+              "text": "Staff set their own duty status; managers see the team at a glance."
+            }
+          ]
+        },
+        {
+          "title": "Admin Panel",
+          "subtitle": "Flutter Web control centre — realtime, role-based, light & dark mode.",
+          "items": [
+            {
+              "title": "Live Dashboard",
+              "text": "KPIs, outlet cost vs revenue, top categories, employee status, POS activities and a featured dish."
+            },
+            {
+              "title": "Floor Plan & POS",
+              "text": "Open and close tables, set states, KOT and invoice printing, discount, tax, service, tip, split payments and merge tables."
+            },
+            {
+              "title": "Orders & Reservations",
+              "text": "Status steppers for online, QR and POS orders and for bookings, with completion e-mails."
+            },
+            {
+              "title": "Menu & Tables",
+              "text": "Dishes, categories and availability with image upload; tables with downloadable and printable QR codes."
+            },
+            {
+              "title": "Staff, Customers & Gift Cards",
+              "text": "Team directory and duty status, customer history and lifetime spend, gift cards and coupons."
+            },
+            {
+              "title": "Inventory",
+              "text": "Stock levels, quick adjustments and low-stock alerts."
+            },
+            {
+              "title": "Analytics & Reports",
+              "text": "Table analytics with busy hours and occupancy, reports and a unified transactions feed with exports."
+            },
+            {
+              "title": "Notifications & Audit Log",
+              "text": "New orders, booking requests, low stock and table alerts; every POS and table action logged with who and when."
+            },
+            {
+              "title": "Roles & Permissions",
+              "text": "Owner, Manager and Staff with 13 permissions; settings are owner-only."
+            }
+          ]
+        },
+        {
+          "title": "Owner App",
+          "subtitle": "The owner mode of the mobile app — the business in your pocket.",
+          "items": [
+            {
+              "title": "Dashboard & POS Summary",
+              "text": "Orders, revenue, bills, peak hour and payment mix."
+            },
+            {
+              "title": "Live Floor & Reports",
+              "text": "Watch the floor live and open sales, table and transaction reports."
+            },
+            {
+              "title": "Full Management",
+              "text": "Orders, reservations, menu, inventory, staff, customers, gift cards and tables."
+            },
+            {
+              "title": "Settings",
+              "text": "Restaurant profile and account settings from the phone."
+            }
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "title": "Built In:",
+          "text": "Flutter, Next.js, Firebase (Cloud Functions, Firestore)"
+        },
+        {
+          "title": "Server Required:",
+          "text": "No VPS needed — Firebase Blaze plan (pay as you go) with Hosting and App Hosting"
+        },
+        {
+          "title": "Third-Party Accounts Required:",
+          "text": "Firebase / Google Cloud, Google Play Console (Apple Developer for iOS), SMTP mail service; optional Razorpay, Stripe or PayPal account for online payments."
+        }
+      ],
+      "whatYouGet": [
+        "Next.js Customer Website",
+        "Flutter Web Admin Panel",
+        "Flutter Mobile App — Customer, Restaurant & Owner modes",
+        "Firebase Backend: Cloud Function API, Rules & Hosting Config",
+        "MySQL → Firestore Data Migration Tool",
+        "Complete Online Documentation",
+        "Lifetime Product Updates"
+      ],
+      "demoLinks": [
+        {
+          "label": "Website Demo",
+          "url": "https://go4foodies-web--go4foodies.asia-southeast1.hosted.app/"
+        },
+        {
+          "label": "Admin Panel Demo",
+          "url": "https://go4foodies-admin.web.app/"
+        }
+      ],
+      "docsUrl": "https://infidec.com/docs/go4foodie",
+      "changelogUrl": "https://infidec.com/docs/go4foodie/docs/changelog",
+      "pricing": {
+        "currency": "INR",
+        "regular": 1799,
+        "extended": 74799,
+        "compareAt": 8299
+      },
+      "seo": {
+        "title": "Go4Foodie – All-in-One Restaurant POS, QR Ordering & Online Food Ordering",
+        "description": "Run dine-in, QR table ordering, take-away and reservations from one platform — a live floor plan and table POS, a Next.js ordering website, a Flutter app with C",
+        "canonicalUrl": "https://infidec.com/products/go4foodie-restaurant-pos-qr-online-ordering-platform"
+      },
+      "media": {
+        "thumbnail": {
+          "url": "https://infidec.com/images/go4foodie-banner-923x470.webp",
+          "alt": "Go4Foodie – All-in-One Restaurant POS, QR Ordering & Online Food Ordering"
+        },
+        "screenshots": [
+          {
+            "url": "https://infidec.com/images/go4foodie/01-platform.webp",
+            "alt": "Go4Foodie runs dine-in POS, QR table ordering and online take-away on one platform",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/02-ecosystem.webp",
+            "alt": "Go4Foodie ecosystem: customer website, Admin Panel and the mobile app with Customer, Restaurant and Owner modes",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/03-tech-stack.webp",
+            "alt": "Go4Foodie tech stack: Flutter, Next.js 16, Firebase Cloud Functions, Firestore, Authentication, Storage, Hosting, App Hosting, Razorpay, Stripe, PayPal and SMTP",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/04-workflow.webp",
+            "alt": "Go4Foodie service workflow: order online or scan the table QR, kitchen KOT, serve, split the bill, Close & Pay, table cleaning",
+            "section": "Tech Stack & Workflow"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/05-website.webp",
+            "alt": "Go4Foodie online ordering website with menu, cart and scheduled pickup",
+            "section": "Website & QR Ordering"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/06-qr-ordering.webp",
+            "alt": "Scan the table QR code, order from the menu and send it straight to the kitchen",
+            "section": "Website & QR Ordering"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/07-reservations.webp",
+            "alt": "Table bookings and private events with live slot availability",
+            "section": "Website & QR Ordering"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/08-payments.webp",
+            "alt": "Razorpay, Stripe and PayPal checkout, or pay at the restaurant",
+            "section": "Website & QR Ordering"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/09-customer-app.webp",
+            "alt": "Go4Foodie Customer App: order, book a table, pay and track orders",
+            "section": "Mobile App"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/10-restaurant-app.webp",
+            "alt": "Go4Foodie Restaurant App: live floor, table bill, add items, split payments and close tables",
+            "section": "Mobile App"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/11-owner-app.webp",
+            "alt": "Go4Foodie Owner App: dashboard, live floor, reports and full management",
+            "section": "Mobile App"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/12-dashboard.webp",
+            "alt": "Go4Foodie admin dashboard with KPIs, outlet cost vs revenue, top categories and POS activities",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/13-floor.webp",
+            "alt": "Live floor plan with table states, open sessions and running bills updating in real time",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/14-pos.webp",
+            "alt": "Table POS: KOT printing, void, discount, tax, service, tip, split payments, merge tables and invoice",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/15-menu.webp",
+            "alt": "Menu and category availability, image upload and inventory with low-stock alerts",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/16-analytics.webp",
+            "alt": "Table analytics: busy hours, occupancy, rankings and session history with CSV, Excel and PDF export",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/17-reports.webp",
+            "alt": "Reports and transactions across orders, gift cards and table payments",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/18-team.webp",
+            "alt": "Staff duty status, roles and permissions for Owner, Manager and Staff, and the audit log",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/19-guests.webp",
+            "alt": "Customers with lifetime spend, gift cards and coupons, and branded e-mails",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/20-requirements.webp",
+            "alt": "Requirements: Firebase Blaze plan, Flutter SDK, Node.js 22, Google Play Console, optional payment gateway and SMTP",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/go4foodie/21-what-you-get.webp",
+            "alt": "Everything included: website, Admin Panel, mobile app with three modes, Firebase backend, data migration tool, documentation and updates",
+            "section": "Requirements"
+          }
+        ]
+      },
+      "liveVerification": {
+        "checkedAt": "2026-11-04T09:50:06.909Z",
+        "ok": true,
+        "mismatches": []
+      }
+    },
+    {
+      "sourceSlug": "go4ride-taxi-booking-ride-hailing-platform",
+      "name": "Go4Ride",
+      "title": "Go4Ride - Taxi Booking, Ride Hailing, Intercity, Rental & Parcel Platform with Driver App and Admin Panel on Firebase",
+      "tagline": "Taxi, Intercity, Rental & Parcel Booking — Customer App, Driver App & Admin Panel",
+      "productType": "app",
+      "categoryKey": "business-service",
+      "shortDescription": "Launch your own ride-hailing business: a Flutter Customer App for cab, intercity, rental and parcel bookings, a Flutter Driver App with KYC, live location, OTP-verified trips and earnings, and a premium Flutter Web Admin Panel — all on a serverless Firebase backend with Razorpay, Stripe, PayPal, cash and wallet payments.",
+      "fullDescription": "Go4Ride is a complete ride-hailing platform for taxi operators, fleet owners and agencies. Riders book a city cab, an intercity seat or a private intercity trip, rent a car by the hour or send a parcel; nearby approved drivers get the request instantly, the rider follows the driver live on the map and the trip starts only after the rider's 4-digit OTP is verified.\n\nThe package includes two Flutter mobile apps (Android & iOS) — the Customer App and the Driver App — and a premium black-and-white Flutter Web Admin Panel with light and dark mode. Everything runs on Google Firebase: Authentication with phone OTP, Cloud Firestore, the Realtime Database for live driver locations, Cloud Storage, Cloud Messaging and Cloud Functions. There is no VPS, PHP, MySQL or cron job to maintain.\n\nMoney is handled on the server. Commission is booked once per completed trip, cash trips deduct the commission from the driver wallet, wallet and online trips credit the driver's share, late cancellations charge a fee to the rider and pay it to the driver, and every online payment through Razorpay, Stripe or PayPal is verified with the gateway before the trip is marked paid or the wallet is credited.",
+      "productUrl": "https://infidec.com/products/go4ride-taxi-booking-ride-hailing-platform",
+      "version": "1.0.0",
+      "releaseDate": "2026-10-24",
+      "lastUpdate": "2026-10-24",
+      "platform": "Flutter 3.x",
+      "techStack": [
+        "Flutter",
+        "Firebase",
+        "Cloud Functions",
+        "Cloud Firestore",
+        "Realtime Database"
+      ],
+      "integrations": [
+        "Google Maps Platform",
+        "Razorpay",
+        "Stripe",
+        "PayPal",
+        "Firebase Cloud Messaging",
+        "Firebase Authentication (Phone OTP)",
+        "Cloud Storage"
+      ],
+      "modules": [
+        "Customer App",
+        "Driver App",
+        "Admin Panel",
+        "Live Tracking",
+        "Driver KYC",
+        "Online Payments"
+      ],
+      "features": [
+        {
+          "title": "Customer App",
+          "subtitle": "Flutter app for riders on Android and iOS.",
+          "items": [
+            {
+              "title": "Phone OTP Login",
+              "text": "Sign in with a phone number and a one-time code; first-time riders add their name and e-mail."
+            },
+            {
+              "title": "Five Services",
+              "text": "Cab, Intercity Sharing, Intercity Personal, Rental and Parcel — enabled and ordered from the admin panel."
+            },
+            {
+              "title": "Vehicle Choice",
+              "text": "Bike, Auto, Mini, Sedan, SUV or your own types, each with its own base fare and per-km rate."
+            },
+            {
+              "title": "Live Tracking & OTP",
+              "text": "Driver name, rating, car and plate, live position on the map, trip progress and the 4-digit start OTP."
+            },
+            {
+              "title": "Cancel, SOS & Support",
+              "text": "Cancel with admin-managed reasons, raise an SOS with location, and chat with support with photo attachments."
+            },
+            {
+              "title": "Wallet & Payments",
+              "text": "Cash, Go4Ride Wallet top-up and online trip payments with Razorpay, Stripe or PayPal."
+            }
+          ]
+        },
+        {
+          "title": "Driver App",
+          "subtitle": "Flutter app for drivers on Android and iOS.",
+          "items": [
+            {
+              "title": "Self-Registration",
+              "text": "Vehicle type, brand and model from the admin catalogue, plate, colour and year."
+            },
+            {
+              "title": "KYC Documents",
+              "text": "Upload front and back photos with expiry dates; see pending, approved or rejected status with the reason."
+            },
+            {
+              "title": "Go Online",
+              "text": "Online only when KYC is approved, location is allowed and the wallet holds the admin's minimum balance."
+            },
+            {
+              "title": "Ride Requests",
+              "text": "Request card with pickup, drop, fare and a countdown; accept or decline."
+            },
+            {
+              "title": "Trip Workflow",
+              "text": "Navigate to pickup, arrive with a free-waiting timer, verify the rider OTP, hold, complete, SOS and call."
+            },
+            {
+              "title": "Earnings & Plans",
+              "text": "Wallet, lifetime earnings, payout requests and subscription plans that waive commission."
+            }
+          ]
+        },
+        {
+          "title": "Admin Panel",
+          "subtitle": "Flutter Web control centre — realtime, role-based, light & dark mode.",
+          "items": [
+            {
+              "title": "Live Dashboard",
+              "text": "Revenue, completed and active rides, online drivers, customers, ride mix and fleet KYC at a glance."
+            },
+            {
+              "title": "Bookings & Dispatch",
+              "text": "Cab, intercity, rental and parcel bookings with status and payment filters, dispatch monitor and dispatch users."
+            },
+            {
+              "title": "Drivers & KYC",
+              "text": "Approve or reject documents, block drivers, see online drivers on a live map and export CSV."
+            },
+            {
+              "title": "Catalogue & Pricing",
+              "text": "Services, zones on a map, rental packages, vehicle types with fares, brands, models and driver document types."
+            },
+            {
+              "title": "Customers & Support",
+              "text": "Customer profiles and wallets, support tickets with chat, support overview and SOS alerts."
+            },
+            {
+              "title": "Growth Tools",
+              "text": "Offers and coupons, home banners, onboarding slides, push notifications to riders or drivers, email templates and badges."
+            },
+            {
+              "title": "Finance",
+              "text": "Commission and cancellation rules, driver subscription plans and history, payout requests and payment gateways."
+            },
+            {
+              "title": "Roles & Employees",
+              "text": "Admin, staff and dispatcher accounts with per-module permissions."
+            },
+            {
+              "title": "Settings",
+              "text": "Platform identity and region, app versions with update prompts, wallet thresholds, driver & ride rules, maps and maintenance mode."
+            }
+          ]
+        },
+        {
+          "title": "Firebase Backend",
+          "subtitle": "Cloud Functions, security rules and data model included.",
+          "items": [
+            {
+              "title": "Driver Matching",
+              "text": "New requests notify online, approved, unblocked drivers inside the search radius; no driver means 'No drivers available'."
+            },
+            {
+              "title": "Auto-Expiry",
+              "text": "A scheduled job closes requests nobody accepted within the admin's time limit."
+            },
+            {
+              "title": "Settlement",
+              "text": "Commission, driver share, wallet moves and ledger entries booked once per completed trip."
+            },
+            {
+              "title": "Verified Payments",
+              "text": "Hosted checkouts for Razorpay, Stripe and PayPal, verified server-side, idempotent and live in the app."
+            }
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "title": "Built In:",
+          "text": "Flutter, Firebase (Cloud Functions, Firestore, Realtime Database)"
+        },
+        {
+          "title": "Server Required:",
+          "text": "No VPS needed — Firebase Blaze plan (pay as you go) with Firebase Hosting for the admin panel"
+        },
+        {
+          "title": "Third-Party Accounts Required:",
+          "text": "Firebase / Google Cloud with a Google Maps Platform API key, Google Play Console (Apple Developer for iOS); optional Razorpay, Stripe or PayPal account for online payments."
+        }
+      ],
+      "whatYouGet": [
+        "Flutter Customer App (Android & iOS)",
+        "Flutter Driver App (Android & iOS)",
+        "Flutter Web Admin Panel",
+        "Firebase Backend: Cloud Functions, Security Rules & Indexes",
+        "Shared Dart Packages, Unit & Security-Rules Tests",
+        "Complete Online Documentation",
+        "Lifetime Product Updates"
+      ],
+      "demoLinks": [],
+      "docsUrl": "https://infidec.com/docs/go4ride",
+      "changelogUrl": "https://infidec.com/docs/go4ride/docs/changelog",
+      "pricing": {
+        "currency": "INR",
+        "regular": 1799,
+        "extended": 74799,
+        "compareAt": 8299
+      },
+      "seo": {
+        "title": "Go4Ride – Taxi, Intercity, Rental & Parcel Booking — Customer App, Driver App & Admin Panel",
+        "description": "Launch your own ride-hailing business: a Flutter Customer App for cab, intercity, rental and parcel bookings, a Flutter Driver App with KYC, live location, OTP-",
+        "canonicalUrl": "https://infidec.com/products/go4ride-taxi-booking-ride-hailing-platform"
+      },
+      "media": {
+        "thumbnail": {
+          "url": "https://infidec.com/images/go4ride-banner-923x470.webp",
+          "alt": "Go4Ride – Taxi, Intercity, Rental & Parcel Booking — Customer App, Driver App & Admin Panel"
+        },
+        "screenshots": [
+          {
+            "url": "https://infidec.com/images/go4ride/01-platform.webp",
+            "alt": "Go4Ride runs city cabs, intercity sharing and personal trips, hourly rentals and parcel delivery on one platform",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/02-ecosystem.webp",
+            "alt": "Go4Ride ecosystem: Customer App, Driver App and Admin Panel on one Firebase backend",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/03-tech-stack.webp",
+            "alt": "Go4Ride tech stack: Flutter, Firebase Authentication, Firestore, Realtime Database, Storage, Cloud Messaging, Cloud Functions, Google Maps, Razorpay, Stripe and PayPal",
+            "section": "Tech Stack & Ride Flow"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/04-ride-flow.webp",
+            "alt": "Go4Ride ride flow: request, driver matching, accept, arriving, arrived with waiting timer, OTP, trip, completion and settlement",
+            "section": "Tech Stack & Ride Flow"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/05-customer-app.webp",
+            "alt": "Go4Ride Customer App: phone login, home with services and offers, booking, live ride with driver details and OTP",
+            "section": "Customer App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/06-payments.webp",
+            "alt": "Pay by cash, Go4Ride Wallet or online with Razorpay, Stripe or PayPal — verified on the server",
+            "section": "Customer App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/07-support-safety.webp",
+            "alt": "Cancel with reasons, SOS during the ride, help topics and support chat with photo attachments",
+            "section": "Customer App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/08-driver-onboarding.webp",
+            "alt": "Driver registration: vehicle details from the admin catalogue and KYC document upload with review and re-upload",
+            "section": "Driver App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/09-driver-trips.webp",
+            "alt": "Driver trip flow: request card with countdown, accept, navigate to pickup, waiting timer, rider OTP and complete trip",
+            "section": "Driver App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/10-driver-earnings.webp",
+            "alt": "Driver earnings, wallet, payout requests and subscription plans",
+            "section": "Driver App"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/11-dashboard.webp",
+            "alt": "Go4Ride admin dashboard: revenue, completed and active rides, online drivers, customers, ride mix and fleet KYC",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/12-bookings.webp",
+            "alt": "Bookings for cab, intercity, rental and parcel with filters, status and payment, dispatch monitor and SOS alerts",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/13-drivers.webp",
+            "alt": "Drivers and KYC review with document approval or rejection, online drivers on a live map",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/14-catalogue.webp",
+            "alt": "Services, zones on a map, rental packages, vehicle types, brands and models, driver document types",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/15-growth.webp",
+            "alt": "Offers and coupons, home banners, onboarding slides, push notifications, email templates and badges",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/16-finance.webp",
+            "alt": "Driver subscription plans and history, payout requests and payment gateway settings",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/17-access-settings.webp",
+            "alt": "Employees, roles and permissions, support tickets and platform settings including maintenance mode",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/18-requirements.webp",
+            "alt": "Requirements: Firebase Blaze plan, Google Maps API key, Flutter SDK, Node.js 20, Google Play Console, optional Razorpay, Stripe or PayPal",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/go4ride/19-what-you-get.webp",
+            "alt": "Everything included: Customer App, Driver App, Admin Panel, Firebase backend, security rules, tests, documentation and updates",
+            "section": "Requirements"
+          }
+        ]
+      },
+      "liveVerification": {
+        "checkedAt": "2026-11-04T09:50:06.913Z",
+        "ok": true,
+        "mismatches": []
+      }
+    },
+    {
+      "sourceSlug": "classiads-hub-classified-ads-buy-sell-marketplace-platform",
+      "name": "ClassiAds-Hub",
+      "title": "ClassiAds-Hub - Classified Ads & Buy-Sell Marketplace with Flutter App, Next.js Website and Admin Panel on Firebase",
+      "tagline": "Classified Ads & Buy-Sell Marketplace — Website, Mobile App & Admin Panel",
+      "productType": "app",
+      "categoryKey": "ecommerce-marketplace",
+      "shortDescription": "Launch your own OLX-style marketplace: a Next.js website and a Flutter app where people post ads with photos and category fields, search and filter, chat and make offers, and a Next.js Admin Panel to moderate ads, manage categories, content, sellers and packages — all on a serverless Firebase backend with Stripe, Razorpay and PayPal checkout on the website.",
+      "fullDescription": "ClassiAds-Hub is a complete classified ads and buy-sell marketplace for any city, country or niche — cars, phones, property, electronics, jobs and anything else. Sellers post an ad with photos, price, location and category-specific details; buyers search, filter, save favourites, chat with the seller and make price offers; and when the item is sold the buyer can rate the seller.\n\nThe package includes a Next.js website, a Flutter app for Android and iOS and a Next.js Admin Panel. Everything runs on Google Firebase: a Cloud Functions REST API, Cloud Firestore, Firebase Authentication (email, phone and Google), Cloud Storage, Cloud Messaging and Firebase Hosting. There is no VPS, PHP, MySQL or cron job to maintain.\n\nYour team runs the marketplace from the Admin Panel: approve or reject ads, build unlimited nested categories with custom fields, manage sliders, feature sections and blog content, verify sellers, handle reviews and reports, and sell posting packages and featured-ad plans on the website through Stripe, Razorpay or PayPal hosted checkout that is verified on the server.",
+      "productUrl": "https://infidec.com/products/classiads-hub-classified-ads-buy-sell-marketplace-platform",
+      "version": "1.0.0",
+      "releaseDate": "2026-10-27",
+      "lastUpdate": "2026-10-27",
+      "platform": "Flutter 3.x & Next.js 16",
+      "techStack": [
+        "Flutter",
+        "Next.js",
+        "Firebase",
+        "Cloud Functions",
+        "Cloud Firestore"
+      ],
+      "integrations": [
+        "Firebase Authentication",
+        "Firebase Cloud Messaging",
+        "Cloud Storage",
+        "Stripe",
+        "Razorpay",
+        "PayPal",
+        "Google Maps Platform"
+      ],
+      "modules": [
+        "Website",
+        "Mobile App",
+        "Admin Panel",
+        "Chat & Offers",
+        "Seller Verification",
+        "Online Payments"
+      ],
+      "features": [
+        {
+          "title": "Website",
+          "subtitle": "Next.js 16 website, deployed to Firebase Hosting.",
+          "items": [
+            {
+              "title": "Browse & Search",
+              "text": "Category menus, keyword search with filters and sorting, category pages and nearby ads."
+            },
+            {
+              "title": "Rich Ad Pages",
+              "text": "Photo gallery, price, category fields, seller card with verified badge and rating, favourite, share and report."
+            },
+            {
+              "title": "Post & Manage Ads",
+              "text": "Post with photos, category fields and location; edit, mark as sold, renew or delete from My Ads."
+            },
+            {
+              "title": "Chat & Offers",
+              "text": "Message sellers from any ad and make price offers."
+            },
+            {
+              "title": "User Dashboard",
+              "text": "Favourites, chats, notifications, reviews, job applications, verification and profile with account deletion."
+            },
+            {
+              "title": "Plans & Checkout",
+              "text": "Buy posting packages and featured-ad plans with Stripe, Razorpay, PayPal or bank transfer."
+            }
+          ]
+        },
+        {
+          "title": "Mobile App",
+          "subtitle": "Flutter app for Android and iOS.",
+          "items": [
+            {
+              "title": "Login Options",
+              "text": "Email and password, phone number and Google sign-in through Firebase Authentication."
+            },
+            {
+              "title": "Home & Discovery",
+              "text": "Sliders, popular categories, featured and most-viewed listings, search and nearby ads."
+            },
+            {
+              "title": "Post Ads",
+              "text": "Category picker, custom fields, multiple photos, price and location."
+            },
+            {
+              "title": "Chat & Offers",
+              "text": "Buying and selling inboxes, conversations, price offers and seller reviews."
+            },
+            {
+              "title": "Push Notifications",
+              "text": "New messages, offers, ad status and admin campaigns via Firebase Cloud Messaging."
+            },
+            {
+              "title": "Profile & Privacy",
+              "text": "Edit profile, verification badge request, language, followers and in-app account deletion."
+            }
+          ]
+        },
+        {
+          "title": "Admin Panel",
+          "subtitle": "Next.js 16 control centre with role-based access.",
+          "items": [
+            {
+              "title": "Dashboard",
+              "text": "Total, featured, active, expired and sold ads, users, subscriptions, reviews and a revenue chart."
+            },
+            {
+              "title": "Ads & Moderation",
+              "text": "Status filters, review screen, approve, reject with reason, feature and create ads for users."
+            },
+            {
+              "title": "Categories & Fields",
+              "text": "Nested categories, drag-to-order, bulk upload and custom fields per category."
+            },
+            {
+              "title": "Content",
+              "text": "Sliders, home screen sections, feature sections, tips, banner ads, blog, FAQs and CMS pages."
+            },
+            {
+              "title": "Sellers & Trust",
+              "text": "Verification fields and requests, seller reviews, review reports, report reasons and user reports."
+            },
+            {
+              "title": "Monetization",
+              "text": "Subscription packages, featured-ad plans, user subscriptions, transactions, bank transfers and payment gateways."
+            },
+            {
+              "title": "People",
+              "text": "Customers, user queries, custom roles with per-module permissions, staff and push notifications."
+            },
+            {
+              "title": "Locations",
+              "text": "Countries, states, cities, areas and currencies."
+            },
+            {
+              "title": "Settings",
+              "text": "General, web and SEO, languages and currency, OTP, notifications, email templates, Firebase, watermark, AI and system status."
+            }
+          ]
+        },
+        {
+          "title": "Firebase Backend",
+          "subtitle": "Cloud Functions REST API, security rules and data model included.",
+          "items": [
+            {
+              "title": "REST API",
+              "text": "One Express API on Cloud Functions with a consistent JSON envelope for the website, app and admin."
+            },
+            {
+              "title": "Verified Payments",
+              "text": "Stripe Checkout, Razorpay Payment Links and PayPal Orders, verified with the gateway before anything is activated."
+            },
+            {
+              "title": "Housekeeping",
+              "text": "An hourly job expires ads, featured flags and subscriptions and settles unfinished payments."
+            },
+            {
+              "title": "Migration & QA",
+              "text": "A MySQL-to-Firestore import tool and automated QA scripts with 190+ API checks."
+            }
+          ]
+        }
+      ],
+      "requirements": [
+        {
+          "title": "Built In:",
+          "text": "Next.js, Flutter, Firebase (Cloud Functions, Firestore, Authentication, Storage)"
+        },
+        {
+          "title": "Server Required:",
+          "text": "No VPS needed — Firebase Blaze plan (pay as you go) with Firebase Hosting for the website and Admin Panel"
+        },
+        {
+          "title": "Third-Party Accounts Required:",
+          "text": "Firebase / Google Cloud with a Google Maps Platform API key, Google Play Console (Apple Developer for iOS); optional Stripe, Razorpay or PayPal account for online payments."
+        }
+      ],
+      "whatYouGet": [
+        "Next.js Website",
+        "Flutter Mobile App (Android & iOS)",
+        "Next.js Admin Panel",
+        "Firebase Backend: Cloud Functions API, Security Rules & Indexes",
+        "Stripe, Razorpay & PayPal Integrations",
+        "MySQL Import Tool & Automated QA Scripts",
+        "Complete Online Documentation",
+        "Lifetime Product Updates"
+      ],
+      "demoLinks": [
+        {
+          "label": "Website Demo",
+          "url": "https://classiadshub.web.app"
+        },
+        {
+          "label": "Admin Panel Demo",
+          "url": "https://classiadshub-admin.web.app/"
+        }
+      ],
+      "docsUrl": "https://infidec.com/docs/classiadshub",
+      "changelogUrl": "https://infidec.com/docs/classiadshub/docs/changelog",
+      "pricing": {
+        "currency": "INR",
+        "regular": 1599,
+        "extended": 66499,
+        "compareAt": 7499
+      },
+      "seo": {
+        "title": "ClassiAds-Hub – Classified Ads & Buy-Sell Marketplace — Website, Mobile App & Admin Panel",
+        "description": "Launch your own OLX-style marketplace: a Next.js website and a Flutter app where people post ads with photos and category fields, search and filter, chat and ma",
+        "canonicalUrl": "https://infidec.com/products/classiads-hub-classified-ads-buy-sell-marketplace-platform"
+      },
+      "media": {
+        "thumbnail": {
+          "url": "https://infidec.com/images/classiadshub-banner-923x470.webp",
+          "alt": "ClassiAds-Hub – Classified Ads & Buy-Sell Marketplace — Website, Mobile App & Admin Panel"
+        },
+        "screenshots": [
+          {
+            "url": "https://infidec.com/images/classiadshub/01-platform.webp",
+            "alt": "ClassiAds-Hub website, Flutter mobile app and Admin Panel on one Firebase backend",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/02-ecosystem.webp",
+            "alt": "ClassiAds-Hub ecosystem: website, mobile app, admin panel and payments around one Firebase Cloud Functions API",
+            "section": "Platform"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/03-tech-stack.webp",
+            "alt": "ClassiAds-Hub tech stack: Next.js, Flutter, Cloud Functions, Firestore, Firebase Auth, Storage, Cloud Messaging, Hosting, Stripe, Razorpay, PayPal and Google Maps",
+            "section": "Tech Stack & Ad Flow"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/04-ad-flow.webp",
+            "alt": "Ad lifecycle: post, admin review, live, chat and offers, mark as sold and seller review",
+            "section": "Tech Stack & Ad Flow"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/05-website.webp",
+            "alt": "ClassiAds-Hub website home, search results and responsive mobile layout",
+            "section": "Website"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/06-ad-detail.webp",
+            "alt": "Ad detail page with photo gallery, price, specs, verified seller card and ratings, on the website and in the app",
+            "section": "Website"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/07-post-ad.webp",
+            "alt": "Post an ad with category fields, photos and location, and manage it from My Ads",
+            "section": "Website"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/08-chat-offers.webp",
+            "alt": "Chat between buyer and seller with price offers and push notifications",
+            "section": "Website"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/09-mobile-app.webp",
+            "alt": "ClassiAds-Hub Flutter app: home, categories, ad detail and My Ads",
+            "section": "Mobile App"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/10-trust-safety.webp",
+            "alt": "Seller verification badges, ratings and reviews, and reports with admin moderation",
+            "section": "Mobile App"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/11-dashboard.webp",
+            "alt": "Admin dashboard with ad counts, users, subscriptions, reviews and a revenue chart",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/12-moderation.webp",
+            "alt": "Ads moderation list with status filters and the ad review screen",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/13-catalogue.webp",
+            "alt": "Nested categories with icons and ordering, and custom fields per category",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/14-content.webp",
+            "alt": "Home screen sections, sliders, feature sections and the blog editor",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/15-monetization.webp",
+            "alt": "Subscription packages and featured-ad plans sold on the website with invoices",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/16-payments.webp",
+            "alt": "Website checkout with Stripe, Razorpay, PayPal and bank transfer, verified on the server",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/17-people-settings.webp",
+            "alt": "Roles and staff permissions, push campaigns and settings sections",
+            "section": "Admin Panel"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/18-requirements.webp",
+            "alt": "Requirements: Firebase Blaze plan, Node.js 22 and Firebase CLI, Flutter SDK, Google Play Console, Google Maps API key, optional Stripe, Razorpay or PayPal",
+            "section": "Requirements"
+          },
+          {
+            "url": "https://infidec.com/images/classiadshub/19-what-you-get.webp",
+            "alt": "Everything included: website, mobile app, admin panel, Firebase backend, payment integrations, migration and QA tools, documentation and updates",
+            "section": "Requirements"
+          }
+        ]
+      },
+      "liveVerification": {
+        "checkedAt": "2026-11-04T09:50:06.900Z",
+        "ok": true,
+        "mismatches": []
+      }
+    }
+  ]
+}
